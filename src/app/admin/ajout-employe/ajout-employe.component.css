@@ -1,0 +1,47 @@
+
+
+.form-panel{
+    
+    background-color: rgb(56, 204, 194);
+    box-shadow: 0 2px 10px rgba(64,64,64,.7);
+    border-radius: 12px 12px 12px 12px;
+
+}
+
+
+
+label {
+    
+    font-family: 'Montserrat',Sans-serif;
+    font-size: 15px;
+    color: rgb(10, 10, 10);
+    padding-top: 10px;
+    top:60%;
+    
+}
+
+input{
+    left: 20%;
+    top:50%;
+    bottom: 800px;
+    
+}
+
+.btn-save{
+    width: 130px;
+    height: 30px;
+    margin : 20px;
+    font-size: 16px;
+    background-color: #b9bdbc;
+    box-shadow: 0 2px 10px rgba(64,64,64,.7);
+    border-radius: 3px ;
+    font-family: 'Montserrat',Sans-serif;
+   
+}
+
+input{
+    color : black;
+    font-family: 'Jost', sans-serif;
+    
+}
+
