@@ -1,156 +1,290 @@
+<div class="container" >
+  <h4 style="margin-top: 50px;margin-left: 50px;"><i class="fa fa-angle-right"></i> Liste des employes</h4>
+  <div class="container2">
+  <table class="table table-striped" >
+
+    <thead class="thead-inverse">
+
+      <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Prenom</th>
+        <th scope="col">Tel</th>
+        <th scope="col">Email</th>
+        <th scope="col">Role</th>
+
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of employes">
+
+        <td>{{e.nom}}</td>
+        <td>{{e.prenom}}</td>
+        <td>{{e.tel}}</td>
+        <td>{{e.email}}</td>
+        <td>{{e.role}}</td>
+
+ 
+        <td>
+          <div>
+            <button mat-raised-button class="action-button btn-success" data-bs-toggle="modal" (click)="getbbyid(e)"
+              data-bs-target="#exampleModal4" aria-hidden="true" ><i class="fa fa-eye" aria-hidden="true"></i></button>
+
+            <button mat-raised-button class="action-button btn-info" data-bs-toggle="modal" (click)="reset(e)"
+              data-bs-target="#exampleModal3"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+
+            <button mat-raised-button class="action-button btn-danger" data-bs-toggle="modal" (click)="reset(e)"
+              data-bs-target="#exampleModal2" aria-hidden="true" ><i class="fa fa-trash"
+                aria-hidden="true"></i></button>
+
+<!-- model du supp -->
+            <div class="modal" id="exampleModal2" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+
+                  <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    êtes-vous sûr de vouloir supprimer
+                  </div>
 
 
-<table class="table table-striped">
-  <thead class="thead-inverse"  >
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
 
-    <tr>
-      <th scope="col">Nom</th>
-      <th scope="col">Prenom</th>
-      <th scope="col">Cin</th>
-      <th scope="col">Tel</th>
-      <th scope="col">Email</th>
-      <th scope="col">Role</th>
-     
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let e of employes">
-     
-      <td>{{e.nom}}</td>
-      <td>{{e.prenom}}</td>
-      <td>{{e.cin}}</td>
-      <td>{{e.tel}}</td>
-      <td>{{e.email}}</td>
-      <td>{{e.role}}</td>
-      
-    
-    <td>
-      <div class="container">
-       <button mat-raised-button class="action-button btn-info" data-bs-toggle="modal" (click)="reset(e)" data-bs-target="#exampleModal3"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-    <button mat-raised-button class="action-button btn-danger" (click)="delete(e.id)" aria-hidden="true" ><i class="fa fa-trash" aria-hidden="true"></i></button>
-    <!--   dans delte data-bs-toggle="modal" data-bs-target="#exampleModal2"
-      <div class="modal" id="exampleModal2" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-         
-          <div class="modal-header">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            êtes-vous sûr de vouloir supprimer
-          </div>
-          
-         
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-       
-            <button type="button"  class="btn btn-danger"  aria-label="Close" data-bs-dismiss="modal" (click)="delete(e.id)" ><i class="fa fa-trash" aria-hidden="true"></i></button>
-          </div>
-          
-        </div>
-      </div>
-    </div> -->
-    </div>
+                    <button type="button" class="btn btn-danger" aria-label="Close" data-bs-dismiss="modal"
+                      (click)="delete()"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                  </div>
 
-    
-    </td>
-  </tr>
-
-   
-
-  </tbody>
-</table>
-
-<div
-  class="modal fade"
-  id="exampleModal3"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">details</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="employeForm" >
-          <div class="form-group">
-              <label for="cin">Cin</label>
-              <input type="number" id="cin" formControlName="cin" class="form-control">
+                </div>
               </div>
-        <div class="form-group">
-          <label for="inputName">Employe Nom</label>
-          <input type="text" id="nom" formControlName="nom" class="form-control">
+            </div>
+<!-- fin du model du supp -->
           </div>
-          <div class="form-group">
-            <label for="inputName">Employe prenom</label>
-            <input type="text" id="prenom" formControlName="prenom" class="form-control">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- model de mise ajour -->
+  <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="employeForm">
+            <div class="form-group">
+               <label for="cin">Cin</label>
+              <input type="number" id="cin" formControlName="cin" class="form-control"[ngClass]="{ 'is-invalid': submitted && employeForm.controls['cin'].errors }">
+              <div *ngIf="submitted && employeForm.controls['cin'].errors" class="invalid-feedback">
+                <div *ngIf="employeForm.controls['cin'].errors['required']">ce champ est obligatoire</div></div>
+            </div>
+            <div class="form-group">
+              <label for="inputName">Employe Nom</label>
+              <input type="text" id="nom" formControlName="nom" class="form-control "  placeholder="nom"   [ngClass]="{ 'is-invalid': submitted && employeForm.controls['nom'].errors }">
+              <div *ngIf="submitted && employeForm.controls['nom'].errors" class="invalid-feedback">
+                <div *ngIf="employeForm.controls['nom'].errors['required']">ce champ est obligatoire</div></div>
+            </div>
+            <div class="form-group">
+              <label for="inputName">Employe prenom</label>
+              <input type="text" id="prenom" formControlName="prenom" class="form-control"[ngClass]="{ 'is-invalid': submitted && employeForm.controls['prenom'].errors }">
+              <div *ngIf="submitted && employeForm.controls['prenom'].errors" class="invalid-feedback">
+                <div *ngIf="employeForm.controls['prenom'].errors['required']">ce champ est obligatoire</div></div>
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" id="email" formControlName="email" class="form-control">
-              </div>
+              <input type="email" id="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && employeForm.controls['email'].errors }" formControlName="email" >
+              <div *ngIf="submitted && employeForm.controls['email'].errors" class="invalid-feedback">
+                <div *ngIf="employeForm.controls['email'].errors['required']">ce champ est obligatoire</div>
+                <div *ngIf="employeForm.controls['email'].errors && !employeForm.controls['email'].errors['required']">S'il vous plaît, mettez une adresse email valide</div></div>
+            </div>
             <div class="form-group">
-              <label >Tel</label>
-              <input type="number" id="tel" formControlName="tel" class="form-control">
-              </div>
-              <div class="form-group">
-                  <label >adresse</label>
-                  <input type="text" id="adresse" formControlName="adresse" class="form-control">
-                  </div>
-      
-                  <div class="form-group">
-                      <label >date_Nais</label>
-                      <input type="date"  formControlName="date_nais" class="form-control">
-                      </div>
+              <label>Tel</label>
+              <input type="number" id="tel" formControlName="tel" class="form-control"[ngClass]="{ 'is-invalid': submitted && employeForm.controls['tel'].errors }">
+              <div *ngIf="submitted && employeForm.controls['tel'].errors" class="invalid-feedback">
+                <div *ngIf="employeForm.controls['tel'].errors['required']">ce champ est obligatoire</div></div>
+            </div>
+            <div class="form-group">
+              <label>adresse</label>
+              <input type="text" id="adresse" formControlName="adresse" class="form-control"[ngClass]="{ 'is-invalid': submitted && employeForm.controls['adresse'].errors }">
+              <div *ngIf="submitted && employeForm.controls['adresse'].errors" class="invalid-feedback">
+                <div *ngIf="employeForm.controls['adresse'].errors['required']">ce champ est obligatoire</div></div>
+            </div>
+
+            <div class="form-group">
+              <label>date_Nais</label>
+              <input type="date" formControlName="date_nais" class="form-control" [ngClass]="{ 'is-invalid': submitted && employeForm.controls['date_nais'].errors }">
+              <div *ngIf="submitted && employeForm.controls['date_nais'].errors" class="invalid-feedback">
+                <div *ngIf="employeForm.controls['date_nais'].errors['required']">ce champ est obligatoire</div></div>
+            </div>
             <div class="form-group">
               <label for="email">salaire</label>
-              <input type="number" id="salaire" formControlName="salaire" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" formControlName="password"  class="form-control" id="exampleInputPassword1">
-              </div>
-              <div class="form-group">
-                  <label for="inputName">Role</label>
-                  <input type="text" id="inputrole" formControlName="role" class="form-control">
-                  </div>
-                  <label for="inputName" class="col-sm-2 col-sm-2 control-label">Genre</label>
-                  <div  class="form-check">
-                  <input class="form-check-input" type="radio" formControlName="genre" value="h" id="homme">
-                  <label class="col-sm-2 col-sm-2 control-label" for="flexRadioDefault1">
-                    homme
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio"  formControlName="genre"  value="f" id="femme" checked>
-                  <label class="col-sm-2 col-sm-2 control-label" for="flexRadioDefault2">
-                   femme
-                  </label>
-                </div>
-                   
-        </form>
-      </div>
-      
-      <div class="modal-footer">
-        <button
-          type="submit"
-          
-          data-bs-dismiss="modal"
-          class="btn btn-primary"
-          (click)="mise()"
-        >
-          Ennregistrer les  modification
-        </button>
+              <input type="number" id="salaire" formControlName="salaire" class="form-control" [ngClass]="{ 'is-invalid': submitted && employeForm.controls['salaire'].errors }">
+              <div *ngIf="submitted && employeForm.controls['salaire'].errors" class="invalid-feedback">
+                <div *ngIf="employeForm.controls['salaire'].errors['required']">ce champ est obligatoire</div></div>
+            </div>
+            <!-- <div class="form-group">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1">
+            </div> -->
+            <div class="form-group">
+              <label for="inputName">Role</label>
+              <input type="text" id="inputrole" formControlName="role" class="form-control" [ngClass]="{ 'is-invalid': submitted && employeForm.controls['role'].errors }">
+              <div *ngIf="submitted && employeForm.controls['role'].errors" class="invalid-feedback">
+                <div *ngIf="employeForm.controls['role'].errors['required']">ce champ est obligatoire</div></div>
+            </div>
+            <label for="inputName" class="col-sm-2 col-sm-2 control-label">Genre</label>
+            <div class="form-check">
+              <input class="col-sm-2 col-sm-2" type="radio" formControlName="genre" value="Homme" id="Homme">
+              <label class="col-sm-2 col-sm-2 control-label" for="flexRadioDefault1">
+                homme
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="col-sm-2 col-sm-2" type="radio" formControlName="genre" value="Femme" id="Femme" checked>
+              <label class="col-sm-2 col-sm-2 control-label" for="flexRadioDefault2">
+                femme
+              </label>
+            </div>
+ 
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" data-bs-dismiss="modal" class="btn btn-primary" (click)="mise()">
+            Enregistrer les modification
+          </button>
+        </div>
       </div>
     </div>
   </div>
+  <!-- fin model de update -->
+
+  <!-- model du consulter -->
+  
+  <div class="modal"  id="exampleModal4" aria-hidden="true" >
+    
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+      <div  *ngFor="let user of employes2">  
+   <div class="wrapper" id="4" >
+    <div class="left"  > 
+      <img src="http://localhost:5000/employe/image/{{user.images.url}}"   style="margin-left: 340px;"alt="user" width="120" class="img-circle">
+      <br>
+      <br>
+      <h3 style="margin-left: 225px;">Information de l'employe</h3>
+      
+    </div>
+          
+    <div class="right" style="margin-left: 30px;">
+      <div class="info" >
+           
+        <div class="info_data">
+          <div class="data">
+            <h4>Nom</h4>
+            <p> {{user.nom}}</p>
+        </div>
+              <div class="data">
+                <h4>Prenom</h4>
+                <p> {{user.prenom}}</p>
+            </div>
+            <div class="data">
+              <h4>Role</h4>
+              <p> {{user.role}}</p>
+          </div>
+          <div class="info_data">
+            <div class="data">
+              <h4>Adresse</h4>
+              <p> {{user.adresse}}</p>
+          </div>
+         
+          
+  
+      </div>
+    </div>
+      <div class="info">
+           
+        <div class="info_data">
+          <div class="data">
+            <h4>Cin</h4>
+            <p> {{user.cin}}</p>
+        </div>
+              <div class="data">
+                <h4>Date de Nais</h4>
+                <p> {{user.date_nais}}</p>
+            </div>
+            <div class="data">
+              <h4>Tel</h4>
+              <p> {{user.tel}}</p>
+          </div>
+          <div class="info_data">
+            <div class="data">
+              <h4>Genre</h4>
+              <p> {{user.genre}}</p>
+          </div>
+         
+          
+  
+      </div>
+    </div>
+            
+    <div class="projects">
+  
+       
+        <div class="info_data">
+          <div class="data">
+            <h4>Email</h4>
+            <p> {{user.email}}</p>
+          </div>
+          <div class="data">
+            <h4>Genre</h4>
+            <p> {{user.genre}}</p>
+          </div>
+          <div  class="data">
+            <h4 >Salaire</h4>
+            <p> {{user.salaire}}</p>
+          </div>
+          
+  
+        </div>
+          
+          
+      </div>
+      
+   
+      
+    </div>
+  
+    
+  
+  </div>
+  
+
+        </div>
+      
+
+
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+
+          <button type="button" class="btn btn-danger" aria-label="Close" data-bs-dismiss="modal"
+            (click)="delete()"><i class="fa fa-trash" aria-hidden="true"></i></button>
+        </div> -->
+
+      </div>
+      <button class="bbtn" printSectionId="4" printTitle ="{{user.nom}}{{user.prenom}}" [useExistingCss] =" true " ngxPrint >Exporter les informations en pdf</button>
+        </div> 
+    </div>
+  </div>
+  <!-- fin model du  consulter -->
 </div>
+  </div>

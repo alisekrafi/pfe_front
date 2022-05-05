@@ -1,0 +1,99 @@
+<div class="d-flex justify-content-end">
+    <button mat-raised-button style="margin-top:12px" class="btn-info" data-bs-toggle="modal"
+    data-bs-target="#exampleModal1">Faire un demande</button>
+</div>
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        </div>
+        <form [formGroup]="congeForm"class="form-panel">
+    
+        
+          <div class="form-group">
+            <label class="col-sm-2 col-sm-2 control-label" >Raison</label>
+            <div class="col-sm-10">
+              
+              <textarea  name="raison" id="raison" formControlName="raison"  placeholder="raison" rows="4" cols="51">
+                
+                </textarea>
+            </div>
+          </div> 
+         <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label"  >Date de debut</label>
+              <div class="col-sm-10">
+              <input type="date"  name="date" class="form-control" id="date" formControlName="date_debut"  placeholder="date_debut">
+              </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 col-sm-2 control-label"  >Date de fin</label>
+                <div class="col-sm-10">
+                <input type="date"  name="date" class="form-control" id="date" formControlName="date_fin"  placeholder="date_fin">
+                </div>
+              </div>
+           
+           
+      
+        
+        <div class="modal-footer">
+          <div class="click">
+            <button _ngcontent-roy-c3="" 
+                  class="btn1 my-2 my-sm-0" 
+                  type="submit" 
+                  (click)="submitconge()"  data-bs-dismiss="modal">Ajouter</button>
+            <button _ngcontent-roy-c3="" 
+                  class="btn1  my-2 my-sm-0" 
+                  type="submit" data-bs-dismiss="modal"
+                  >Annuler</button>
+          
+          </div>
+        </div>
+    </form> 
+      </div>
+    </div>
+  </div>
+
+    <table class="table table-striped">
+        <thead class="thead-inverse">
+
+            <tr> 
+                
+                <th scope="col">date_debut</th>
+                <th scope="col">date_fin</th>
+                <th scope="col">Raison</th>
+
+
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of conges">
+
+                
+                <td>{{e.date_debut}}</td>
+                <td>{{e.date_fin}}</td>
+                <td>{{e.raison}}</td>
+
+
+
+                <td>
+                    <div>
+                        <button mat-raised-button class="action-button btn-success" routerLink="/details">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                        <button mat-raised-button class="action-button btn-info"><i class="fa fa-trash"
+                                aria-hidden="true"></i></button>
+
+                    </div>
+                </td>
+            </tr>
+
+
+
+        </tbody>
+    </table>

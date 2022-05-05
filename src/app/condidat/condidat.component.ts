@@ -12,9 +12,9 @@ import { Employe } from '../admin/modal/employe';
 })
 export class CondidatComponent implements OnInit {
 
-  employeForm!: FormGroup;
+  condidateForm!: FormGroup;
   url = 'http://localhost:3000/Users';
-  constructor(
+  constructor( 
     private http: HttpClient,
     private router: Router,
     private formbuilder: FormBuilder
@@ -22,18 +22,23 @@ export class CondidatComponent implements OnInit {
   employes: Employe[] = [];
   employe!: Employe;
   ngOnInit(): void {
-    this.employeForm = this.formbuilder.group({
-      id: [''],
+    this.condidateForm = this.formbuilder.group({
+      _id: [''],
       nom: [''],
       prenom: [''],
       email: [''],
       tel: [''],
-      salary: [''],
-      password: [''],
+      diplome: [''],
+      genre:[''],
+      experience:[''],
+      date_nais:[''],
+      niveau: [''],
+      universte:[''],
       role: [''],
+      type:[''],
     });
    
-  }
+  } 
   getEmployes() {
     this.employes = [];
     this.http.get(this.url).subscribe((res: any) => {
@@ -46,11 +51,11 @@ export class CondidatComponent implements OnInit {
     this.router.navigateByUrl('/project/' + p);
   }
   updateEmploye() {
-    let e = this.employeForm.value;
+    let e = this.condidateForm.value;
     this.http
-      .patch<Employe>(this.url + this.employeForm.value.id, e)
+      .patch<Employe>(this.url + this.condidateForm.value.id, e)
       .subscribe((res: any) => {});
-    this.employeForm.reset();
+    this.condidateForm.reset();
     this.employes = [];
     this.getEmployes();
   }
@@ -60,7 +65,7 @@ export class CondidatComponent implements OnInit {
   }
   reset(e: Employe) {
    
-    this.employeForm.setValue(e);
+    this.condidateForm.setValue(e);
   }
 }
 

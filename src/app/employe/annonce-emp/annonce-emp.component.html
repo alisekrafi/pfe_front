@@ -1,0 +1,30 @@
+
+
+
+ 
+   
+    <table class="table table-striped">
+      <thead class="thead-inverse">
+  
+        <tr>
+          <th scope="col">Titre</th>
+          <th scope="col">Date d'ajout</th>
+         
+          <th scope="col">Sujet</th>
+         
+  
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of annonces">
+  
+          <td>{{e.titre}}</td>
+          <td>{{e.date}}</td>
+          <td class="aa">{{e.sujet}}</td>
+      
+        </tr>
+         </tbody>
+      
+    </table>
+  

@@ -1,47 +1,89 @@
 
-
-.form-panel{
-    
-    background-color: rgb(56, 204, 194);
-    box-shadow: 0 2px 10px rgba(64,64,64,.7);
-    border-radius: 12px 12px 12px 12px;
-
+.alert {
+  position: fixed;
+  top: 0;
+  right: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+  padding: 2rem;
+  background: #fff; 
+  color: #56f6c1;
+  box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
 }
-
-
+.alert1 {
+  position: fixed;
+  top: 0;
+  right: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+  padding: 2rem;
+  background: #fff;
+  color: #f65656;
+  box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+}
+.visible {
+  opacity: 1;
+  transform: translateY(1.25rem);
+}
+.btn-theme {
+    color: #fff;
+    background-color: #4ECDC4;
+    border-color: #48bcb4;
+}
+.btn-block {
+    display: block;
+    width: 100%;
+}
+.checkbox, .radio {
+    position: relative;
+    display: block;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
 label {
-    
-    font-family: 'Montserrat',Sans-serif;
-    font-size: 15px;
-    color: rgb(10, 10, 10);
-    padding-top: 10px;
-    top:60%;
-    
+    font-weight: 400;
+    font-size: 14px;
 }
 
-input{
-    left: 20%;
-    top:50%;
-    bottom: 800px;
-    
-}
-
-.btn-save{
-    width: 130px;
-    height: 30px;
-    margin : 20px;
+input {
     font-size: 16px;
-    background-color: #b9bdbc;
-    box-shadow: 0 2px 10px rgba(64,64,64,.7);
-    border-radius: 3px ;
-    font-family: 'Montserrat',Sans-serif;
+}
+
+body {
+    color: #797979;
+    background: #949290;
+    font-family: 'Ruda', sans-serif;
+    padding: 0px !important;
+    margin: 0px !important;
+    font-size: 13px;
+}
+
+.card {
+  background-color: #faf4f4;
+  border-radius: 2px;
+    height: 600px;
+    width: 700px;
+    margin-left: 20px;
+    padding-left: 2%;
+    padding-right: 2%;
+    position: relative;
+}
+
+
+.btn{
    
+    font-size: 16px;
 }
 
-input{
-    color : black;
-    font-family: 'Jost', sans-serif;
-    
-}
 
+.container2 {
+  margin-top: 2%;
+  margin-left: 400px;
+  width: 82%;
+}

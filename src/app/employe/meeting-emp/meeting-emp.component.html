@@ -1,0 +1,24 @@
+<div data-bs-spy="scroll">
+    <div class="container">
+     
+      <table class="table table-striped">
+        <thead class="thead-inverse">
+    
+          <tr>
+            <th scope="col">Titre</th>
+            <th scope="col">Sujet</th>
+            <th scope="col">date</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let e of meetings">
+    
+            <td>{{e.titre}}</td>
+            <td><p>{{e.sujet}}</p></td>
+            <td>{{e.date}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>

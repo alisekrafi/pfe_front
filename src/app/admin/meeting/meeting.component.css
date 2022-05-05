@@ -1,0 +1,115 @@
+.chip {
+  display: inline-block;
+  padding-left: 25px;
+  padding-right: 5px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 15px;
+  background-color: #f1f1f1;
+}
+.chips {
+  min-height: 50px;
+  margin: 10px;
+}
+.chip img {
+  float: left;
+  margin: 0 10px 0 -25px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+.closebtn {
+  padding-left: 10px;
+  color: #888;
+  font-weight: bold;
+  float: right;
+  cursor: pointer;
+}
+
+.closebtn:hover {
+  color: #000;
+}
+.tooltipe:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.liste {
+  height: 200px;
+  overflow-y: scroll;
+}
+.liste::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 4px;
+}
+.liste::-webkit-scrollbar-thumb {
+  background: #f21e4e;
+  border-radius: 4px;
+}
+
+.btn1 {
+  margin: 5px;
+  color: #f2f2f2;
+  font-size: 16px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border: 1px solid #4ecdc4 !important;
+  padding: 5px 15px;
+
+  background: #4ecdc4;
+}
+.container {
+  margin-left: 300px;
+  width: 75%;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  box-shadow: 0 2px 10px rgba(64, 64, 64, 0.7);
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+  margin-top: 3rem;
+}
+td,
+th {
+  padding: 15px 20px;
+  text-align: center;
+  font-size: 16.5px;
+}
+th {
+  background-color: #4ecdc4;
+  color: #fafafa;
+  font-family: "Open Sans", Sans-serif;
+  font-weight: 200;
+  text-transform: uppercase;
+}
+
+td {
+  margin-top: 5%;
+}
+tr {
+  width: 100%;
+  background-color: #fafafa;
+  font-family: "Montserrat", sans-serif;
+}
+tr:nth-child(even) {
+  background-color: #eeeeee;
+}
+
+.container2 {
+  height: 500px;
+  overflow-y: scroll;
+}
+.container::-webkit-scrollbar {
+  width: 4px;
+}
+.container::-webkit-scrollbar-track {
+  border-radius: 4px;
+}
+input {
+  width: 100%;
+}
+.container::-webkit-scrollbar-thumb {
+  background: #090c0c;
+  border-radius: 4px;
+}

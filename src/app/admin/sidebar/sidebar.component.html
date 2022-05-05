@@ -1,58 +1,77 @@
-
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar .sidebar-collapse sidebar-dark-primary elevation-4">
+<aside class="main-sidebar .sidebar-collapse sidebar-dark-primary elevation-4" style="top:65px;">
   <!-- Brand Logo -->
-  <a href="index3.html" class="brand-link">
-    <img src="assets/hormiga2.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-         style="opacity: .8">
-    <span class="brand-text font-weight-light">Admin</span>
-  </a>
+  <!-- <a href="index3.html" class="brand-link">
+    <img src="assets/hormiga2.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <span class="brand-text font-weight-light">{{user.employe.role}}</span>
+  </a> -->
 
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="image">
-        <img src="assets/karim.jpg" class="img-circle elevation-2" alt="User Image">
-      </div>
-      <div class="info">
-        <a routerLink="liste_condidate" class="d-block">nom </a>
+      <div *ngIf="employes2" >
+      <img src="http://localhost:5000/employe/image/{{employes2}}" class="img-circle elevation-2"  alt="User Image">
+    </div>
+      <div class="info"> 
+        <a routerLink="/dashboard_admin/detail"class="d-block">{{user.employe.nom}}  {{user.employe.prenom}}</a>
       </div>
     </div>
-
+ 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
-             
+ 
         <li class="nav-item menu-open">
-          <a routerLink="/liste_condidat" class="nav-link">
-            <i class="far fa-circle nav-icon"></i>
-            <p>liste des condidats </p>
-          </a>
+          
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a routerLink="/liste_emp" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>liste des employes </p>
+              <a routerLink="/dashboard_admin/detail" class="nav-link">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <p>     Profile</p>
               </a>
             </li>
             <li class="nav-item">
-              <a routerLink="/ajout_emp" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Ajouter Employe</p>
+              <a routerLink="/dashboard_admin/liste_emp" class="nav-link">
+                <i class="fa fa-th-list" aria-hidden="true"></i>
+                <p>     liste des employes </p>
               </a>
             </li>
+            
+            
           </ul>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              Simple Link
-              <span class="right badge badge-danger">New</span>
-            </p>
+          <a routerLink="/dashboard_admin/ajout_emp" class="nav-link">
+            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+            <p>     Ajouter Employe</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/dashboard_admin/liste_conge" class="nav-link">
+            <i class="fa fa-th-list" aria-hidden="true"></i>
+
+            <p>     Congés</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/dashboard_admin/meeting" class="nav-link">
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            <p>     Réunion </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/dashboard_admin/annonce" class="nav-link">
+            <i class="fa fa-sticky-note-o" aria-hidden="true"></i>
+            <p>     Annonce</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/dashboard_admin/liste_condidat" class="nav-link">
+            <i class="fa fa-th-list" aria-hidden="true"></i>
+            <p>     liste des condidats </p>
           </a>
         </li>
       </ul>

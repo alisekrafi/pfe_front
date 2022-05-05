@@ -1,96 +1,64 @@
-<div class="wrapper">
-    <div class="left"> 
-      <img src="}}"  width="150" class="img-circle" >
+
+   <div class="wrapper"  *ngFor="let user of employes">
+    <div class="left" > 
+      <img src="http://localhost:5000/employe/image/{{user.images.url}}"  alt="user" width="150" class="img-circle">
       <br>
       <br>
-      <h4>employe.prenom employe.nom </h4>
-      <h2>employe.fonction</h2>
-  
+      <h4>{{user.prenom}} {{user.nom}} </h4>
+      <h2>{{user.role}}</h2>
+   
     </div>
           
     <div class="right">
   
       <div class="info">
-            <h3> Contact information</h3>
+            <h3>les information</h3>
         <div class="info_data">
+          <div class="data">
+            <h4>Cin</h4>
+            <p> {{user.cin}}</p>
+        </div>
               <div class="data">
-                <h4>Date of birth</h4>
-                <p> employe.dateOfBirth</p>
+                <h4>Date de Nais</h4>
+                <p> {{user.date_nais}}</p>
             </div>
             <div class="data">
-              <h4>Phone</h4>
-              <p> employe.phone</p>
+              <h4>Tel</h4>
+              <p> {{user.tel}}</p>
           </div>
-          <div class="data">
-            <h4>Email</h4>
-            <p> employe.email</p>
-          </div>
+         
+         
           
-  
-      </div>
-  
-      <div class="info_data">
-  
-        <div class="data">
-          <h4>Address</h4>
-          <p> employe.adresse</p>
-        </div>
-  
-        <div class="data">
-          <h4>CIN</h4>
-          <p> employe.cin</p>
-      </div>
-  
-      <div class="data">
-        <h4>CNSS</h4>
-        <p> employe.cnss</p>
-    </div>
   
       </div>
     </div>
             
     <div class="projects">
   
-        <h3> Post</h3>
+       
         <div class="info_data">
           <div class="data">
-            <h4>Department</h4>
-            <p> employe.departement</p>
+            <h4>Email</h4>
+            <p> {{user.email}}</p>
           </div>
           <div class="data">
-            <h4>Fonction</h4>
-            <p> employe.fonction</p>
+            <h4>Genre</h4>
+            <p> {{user.genre}}</p>
           </div>
-          <div class="data">
-            <h4>Type of Contract</h4>
-            <p> employe.typeContrat</p>
+          <div  class="data">
+            <h4 >Salary</h4>
+            <p> {{user.salaire}}</p>
           </div>
           
   
         </div>
           
-        <div class="info_data">
-          <div class="data">
-            <h4>Entry date </h4>
-            <p> employe.dateEntr</p>
-          </div>
-          <div class="data">
-            <h4>Salary</h4>
-            <p> employe.salary</p>
-          </div>
-          <div class="data">
-            
-          </div>
-  
-        </div>
           
       </div>
-      <a class="btn"  >Export informations to PDF</a>
-      
+      <button class="btn" routerLink="/dashboard_admin/info"  > Edit your information</button>
       
     </div>
   
     
   
   </div>
-  

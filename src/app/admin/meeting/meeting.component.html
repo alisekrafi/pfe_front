@@ -1,0 +1,205 @@
+
+   <div class="d-flex justify-content-end">
+    <button  style="margin-top:12px" class="btn1" data-bs-toggle="modal"
+    data-bs-target="#exampleModal1">ajouter meeting</button>
+</div>
+<div data-bs-spy="scroll">
+  <div class="container">
+    <h4><i class="fa fa-angle-right"></i> Liste des Réunions</h4>
+    <div class="container2">
+    <table class="table table-striped">
+      <thead class="thead-inverse">
+  
+        <tr> 
+          <th scope="col">Titre</th>
+          <th scope="col">Sujet</th>
+          <th scope="col">date</th>
+          <th scope="col">Horaire</th>
+         <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of meetings">
+  
+          <td>{{e.titre}}</td>
+          <td><p>{{e.sujet}}</p></td>
+          <td>{{e.date}}</td>
+          <td>10:00:00</td>
+        <td>
+            <div>
+              <button mat-raised-button class="action-button btn-info" data-bs-toggle="modal" (click)="reset(e)"
+                data-bs-target="#exampleModal3"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+              <button mat-raised-button class="action-button btn-danger" data-bs-toggle="modal"
+                data-bs-target="#exampleModal2" aria-hidden="true" (click)="reset(e)"><i class="fa fa-trash"
+                  aria-hidden="true"></i></button>
+  <!-- modal supp -->
+              <div class="modal" id="exampleModal2" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+  
+                    <div class="modal-header">
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      êtes-vous sûr de vouloir supprimer
+                    </div>
+  
+  
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+  
+                      <button type="button" class="btn btn-danger" aria-label="Close" data-bs-dismiss="modal"
+                        (click)="delete()"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                    </div>
+                  
+                  </div>
+                </div>
+              </div>
+  <!-- fin modal supp -->
+            </div>
+          </td>
+        </tr>
+         </tbody>
+      
+    </table>
+    </div>
+  </div>
+        <!-- moadal d'ajoute -->
+            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div> 
+                  <div class="modal-body">
+                  </div>
+                  <form [formGroup]="meetingaForm"class="form-panel">
+              
+                    <div class="form-group">
+                      <label class="col-sm-2 col-sm-2 control-label" >Titre</label>
+                      <div class="col-sm-10">
+                        <input type="text"  name="titre" id="titre"  formControlName="titre" placeholder="titre">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 col-sm-2 control-label" >Sujet</label>
+                      <div class="col-sm-10">
+                        <input type="texta"  name="sujet" id="sujet" formControlName="sujet"  placeholder="sujet">
+                      </div>
+                    </div> 
+                   
+                    <div class="form-group" style="border:2px solid rgb(207, 201, 201);border-radius: 5px;"  (mouseleave)="blure()">
+                      <div class="text-center">Équipe de réunion</div>
+                      <div class="chips" >
+                        
+                        <div class="chip mx-1" *ngFor="let e of teams">
+                          <img src="../../../assets/karim.jpg" alt="Person" width="96" height="96">
+                          {{e.nom}}
+                          <span class="closebtn" (click)="removeChip(e)">&times;</span>
+                        </div>
+                      </div>
+                      
+                      
+                      <input type="text" class="form-control"(focus)="visible=true; emps=employes"formControlName="equipe" placeholder="Selection du personnel" (input)="input($event)">
+                      <div *ngIf="visible" class="liste">
+                        <ul class="list-group"  *ngFor="let e of emps">
+                            <div class="list-group-item" (click)="addChip(e)">{{e.nom}} {{e.prenom}}</div>
+                        </ul>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label"  >date</label>
+                        <div class="col-sm-10">
+                        <input type="datetime-local" id="date" name="date"  class="form-control" formControlName="date">     
+                      </div>
+                      </div>
+                      
+                     
+                  </form> 
+                  <div class="modal-footer">
+                    <div class="click">
+                      <button _ngcontent-roy-c3="" 
+                            class="btn1 my-2 my-sm-0" 
+                            type="submit" 
+                            (click)="ajoutemeeting()"  data-bs-dismiss="modal"
+                            >Save</button>
+                      <button _ngcontent-roy-c3="" 
+                            class="btn1  my-2 my-sm-0" 
+                            type="submit" data-bs-dismiss="modal"
+                            >Cancel</button>
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+           <!-- moadal modifier -->
+  <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div> 
+        <div class="modal-body">
+          <form [formGroup]="meetingForm"class="form-panel">
+              
+                    <div class="form-group">
+                      <label class="col-sm-2 col-sm-2 control-label" >Titre</label>
+                      <div class="col-sm-10">
+                        <input type="text"  name="titre" id="titre"  formControlName="titre" placeholder="titre">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 col-sm-2 control-label" >Sujet</label>
+                      <div class="col-sm-10">
+                        <input type="texta"  name="sujet" id="sujet" formControlName="sujet"  placeholder="sujet">
+                      </div>
+                    </div>
+                  
+                      <div class="form-group" style="border:2px solid rgb(207, 201, 201);border-radius: 5px;"  (mouseleave)="blure()">
+                          <div class="text-center">Équipe de réunion</div>
+                          <div class="chips" >
+                            
+                            <div class="chip mx-1" *ngFor="let e of teams">
+                              <img src="../../../assets/karim.jpg" alt="Person" width="96" height="96">
+                              {{e.nom}}
+                              <span class="closebtn" (click)="removeChip(e)">&times;</span>
+                            </div>
+                          </div>
+                          
+                          
+                          <input type="text" class="form-control"(focus)="visible=true; emps=employes"formControlName="equipe" placeholder="Selection du personnel" (input)="input($event)">
+                          <div *ngIf="visible" class="liste">
+                            <ul class="list-group"  *ngFor="let e of emps">
+                                <div class="list-group-item" (click)="addChip(e)">{{e.nom}} {{e.prenom}}</div>
+                            </ul>
+                        </div>
+                        </div>
+                    
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label"  >date</label>
+                        <div class="col-sm-10">
+                          <input type="datetime-local" id="date" name="date"  class="form-control" formControlName="date">     
+                        </div>
+                      </div>
+                      <!-- <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">time</label>
+                        <div class="col-sm-10">
+                        <input type="time"  name="time" class="form-control" id="time" formControlName="time" placeholder="time">
+                      </div>
+                      </div> -->
+                     
+                  </form> 
+        </div>
+ 
+        <div class="modal-footer">
+          <button type="submit" data-bs-dismiss="modal" class="btn btn-primary" >
+            Enregistrer les modification
+          </button>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>

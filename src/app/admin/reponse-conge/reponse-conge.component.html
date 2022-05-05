@@ -1,0 +1,99 @@
+
+<div class="container"   >
+
+   
+
+
+    <div class="left"> 
+        <img src="http://localhost:5000/employe/image/{{tab[8]}}" alt="user" width="100" class="img-circle">
+        <br>
+        <br>
+        <h4>{{tab[6]}} {{tab[7]}}</h4>
+        <p>{{tab[9]}}</p>
+    
+      </div> 
+    
+    <div class="right">
+        <h5><i class="fa fa-angle-right"></i> Réponse</h5>
+        <br>
+        <br>
+        <div class="info">
+              
+          <div class="info_data">
+                <div >
+                  <h4>Date demande  </h4>
+                  <p> {{tab[3]}}</p>
+              </div>
+              <div>
+                <h4>Type vaconce </h4>
+                <p style="margin-left: 3px;"> Formation</p>
+            </div>
+          </div>
+          <div class="info_data">
+              <div class="data">
+                <h4>Date Debut</h4>
+                <p>{{tab[1]}}</p>
+            </div>
+            <div style="margin-left: 35px;"class="data">
+              <h4>Date Fin</h4>
+              <p>{{tab[2]}}</p>
+            </div>
+          </div>
+            
+            <br>
+            <br>
+            <div class="info_data">
+            <button class="btS" data-bs-toggle="modal" data-bs-target="#exampleModal3">Accepter</button>
+    
+            <button class="btS" data-bs-toggle="modal" data-bs-target="#exampleModal1">Refuser</button>
+            
+            </div>
+     </div>
+      </div>
+ </div>
+   
+
+<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-body">
+          <p>Do you want to agree to assign the vacation?</p>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <div>
+        <button type="button" (click)="accepte()" class="btn1" aria-label="Close" data-bs-dismiss="modal">Accepter</button>
+        <button type="button" class="btn1" data-bs-dismiss="modal">Annuler</button>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-body">
+          <p>Do you want to agree to assign the vacation?</p>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <div>
+        <button type="button" (click)="Refuser()" class="btn1" aria-label="Close" data-bs-dismiss="modal">Refuser</button>
+        <button type="button" class="btn1" data-bs-dismiss="modal">Annuler</button>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

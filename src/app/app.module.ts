@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import {NgxPrintModule} from 'ngx-print';
+
 
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +17,21 @@ import { DetailsComponent } from './admin/details/details.component';
 import { ListeCondidateComponent } from './admin/liste-condidate/liste-condidate.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AjoutEmployeComponent } from './admin/ajout-employe/ajout-employe.component';
+import { DashboardEmpComponent } from './employe/dashboard-emp/dashboard-emp.component';
+import { ListeCongeComponent } from './admin/liste-conge/liste-conge.component';
+import { MeetingComponent } from './admin/meeting/meeting.component';
+import { AnnonceComponent } from './admin/annonce/annonce.component';
+import { AnnonceEmpComponent } from './employe/annonce-emp/annonce-emp.component';
+import { SidebarEmpComponent } from './employe/sidebar-emp/sidebar-emp.component';
+import { DemandeCongeComponent } from './employe/demande-conge/demande-conge.component';
+import { MeetingEmpComponent } from './employe/meeting-emp/meeting-emp.component';
+import { UpdateInfoComponent } from './admin/update-info/update-info.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { ReponseCongeComponent } from './admin/reponse-conge/reponse-conge.component';
+import { UpdatePwdComponent } from './admin/update-pwd/update-pwd.component';
+
+
 
 
 
@@ -30,7 +47,21 @@ import { AjoutEmployeComponent } from './admin/ajout-employe/ajout-employe.compo
     SidebarComponent,
     DetailsComponent,
     ListeCondidateComponent,
-    AjoutEmployeComponent
+    AjoutEmployeComponent,
+    DashboardEmpComponent,
+    ListeCongeComponent,
+    MeetingComponent,
+    AnnonceComponent,
+    AnnonceEmpComponent,
+    SidebarEmpComponent,
+    DemandeCongeComponent,
+    MeetingEmpComponent,
+    UpdateInfoComponent,
+    ResetPasswordComponent,
+    ForgetPasswordComponent,
+    ReponseCongeComponent,
+    UpdatePwdComponent,
+   
    
     
   ],
@@ -40,7 +71,8 @@ import { AjoutEmployeComponent } from './admin/ajout-employe/ajout-employe.compo
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    
+    NgxPrintModule,
+   
    
   ],
   providers: [],
