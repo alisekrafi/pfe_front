@@ -1,16 +1,16 @@
 
 <app-navbar></app-navbar>
-<div class="row mt" style="padding: 1%">
+<form class="row mt" style="padding: 1%" [formGroup]="condidateForm">
 
-  <div class="col-lg-6 col-md-6 col-sm-12" >
+  <div class="col-lg-6 col-md-6 col-sm-12"  >
     <!--  BASIC BUTTONS -->
     <div class="showback">
       <h4><i class="fa fa-angle-right"></i> Cordonnées</h4>
-      <form class="form-horizontal style-form" style="margin-top: 5px;" [formGroup]="condidateForm" >
+      <div class="form-horizontal style-form" style="margin-top: 5px;"  >
         <div class="form-group">
           <label class="col-sm-2 col-sm-2 control-label">Nom</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="nom" id="nom" placeholder="nom">
+            <input type="text" class="form-control" name="nom" id="nom" placeholder="nom" formControlName="nom">
             
           </div>
         </div> 
@@ -20,7 +20,7 @@
           <label class="col-sm-2 col-sm-2 control-label">Prenom
           </label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="prenom" id="prenom" placeholder="prenom">
+            <input type="text" class="form-control" name="prenom" id="prenom" placeholder="prenom"formControlName="prenom">
           </div> 
         </div>
         <hr style="height:2px;border-width:0;color:rgb(255, 255, 255);background-color:rgb(255, 255, 255)">
@@ -28,7 +28,7 @@
         <div class="form-group">
           <label class="col-sm-2 col-sm-2 control-label">Date De Naiss</label>
           <div class="col-sm-10">
-            <input type="date" class="form-control" name="dateOfBirth" id="dateOfBirth" placeholder="date_nais">
+            <input type="date" class="form-control" name="dateOfBirth" id="dateOfBirth" placeholder="date_nais"formControlName="date_nais">
       
         <hr style="height:2px;border-width:0;color:rgb(255, 255, 255);background-color:rgb(255, 255, 255)">
    
@@ -36,7 +36,7 @@
         <div class="form-group">
           <label class="col-sm-2 col-sm-2 control-label">Email</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="email" id="email" placeholder="email">
+            <input type="text" class="form-control" name="email" id="email" placeholder="email" formControlName="email">
            
           </div>
         </div>
@@ -45,23 +45,23 @@
         <div class="form-group">
           <label class="col-sm-2 col-sm-2 control-label">Tel</label>
           <div class="col-sm-10">
-            <input type="number" class="form-control" name="Tel" id="Tel" placeholder="tel">
+            <input type="number" class="form-control" name="Tel" id="Tel" placeholder="tel" formControlName="tel">
        
           </div>
         </div>
         <hr style="height:2px;border-width:0;color:rgb(255, 255, 255);background-color:rgb(255, 255, 255)">
         <div class="col-sm-10">
                           
-          <label for="inputName">Gnre</label>
+          <label for="inputName">Genre</label>
           <div  class="form-check">
-          <input class="form-check-input" type="radio" formControlName="type" value="Homme" id="Homme" >
+          <input class="form-check-input" type="radio" value="Homme" id="Homme" formControlName="genre" >
           <label class="col-sm-2 col-sm-2 control-label" for="flexRadioDefault1">
             Homme
           </label>
         </div>
         
         <div class="form-check">
-          <input class="form-check-input" type="radio"  formControlName="genre"  value="Femme" id="Femme" checked >
+          <input class="form-check-input" type="radio"  formControlName="genre"  value="Femme" id="Femme" checked  >
           <label class="col-sm-2 col-sm-2 control-label" for="flexRadioDefault2">
          Femme
           </label> 
@@ -74,13 +74,14 @@
         <label class=" control-label">Lettre de motivation</label>
         <div class="col-sm-10">
             
-                <input type="file" class="form-control" id="customFile" placeholder=""  >
+                <input type="file" class="form-control" id="customFile" (change)="addlettre($event)" >
                 
                
         </div>
       </div>
 
-          </div></div></form>
+          </div></div>
+        </div>
       
     </div>
     
@@ -90,12 +91,12 @@
 
     <div class="showback">
       <h4><i class="fa fa-angle-right"></i> Niveau d'étude</h4>
-      <form class="form-horizontal style-form" style="margin-top: 10px;"[formGroup]="condidateForm">
+      <div class="form-horizontal style-form" style="margin-top: 10px;">
         
           <div class="form-group">
               <label class="col-sm-2 col-sm-2 control-label">Niveau</label>
               <div class="col-sm-10">
-                <input type="text"  class="form-control" name="niveauEtud" id="niveauEtud" placeholder="Niveau">
+                <input type="text"  class="form-control" name="niveauEtud" id="niveauEtud" placeholder="Niveau" formControlName="niveau">
                 
               </div>
           </div>
@@ -104,7 +105,7 @@
           <div class="form-group">
               <label class="col-sm-2 col-sm-2 control-label">Diplôme </label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="titreDiplome" id="titreDiplome" placeholder="diplome">
+                <input type="text" class="form-control" name="titreDiplome" id="titreDiplome" placeholder="diplome"  formControlName="diplome">
                 
               </div>
           </div>
@@ -113,31 +114,23 @@
           <div class="form-group">
               <label class="col-sm-2 col-sm-2 control-label">université</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="university" id="university" placeholder="universite">
+                <input type="text" class="form-control" name="university" id="university" placeholder="universite" formControlName="universite">
                
  
               </div>
           </div>
-      </form>
+        </div>
     </div>
-
+ 
     <div class="showback1">
       <h4><i class="fa fa-angle-right" style="padding-top: 10px;"></i> Expérience</h4>
-      <form class="form-horizontal style-form" style="margin-top: 10px;" [formGroup]="condidateForm">
-          <!-- <div class="form-group">
-              <label class=" control-label">Durée d'expérience</label>
-              
-              <div class="col-sm-10">
-                <input type="text"  class="form-control" name="niveauExp" id="niveauExp" placeholder="Durée d'expérience">
-                required  #niveauExp="ngModel" [class.is-invalid]="niveauExp.invalid && niveauExp.touched">
-                <small class="text-danger" [class.d-none]="niveauExp.valid || niveauExp.untouched" style="font-size: 11px;">Years of experience is required</small>
-              </div>
-          </div> -->   <div class="form-group">
+      <div class="form-horizontal style-form" style="margin-top: 10px;" >
+         <div class="form-group">
           <label class="col-sm-2 col-sm-2 control-label">CV</label>
           <div class="col-sm-10">
               
                   <div style="margin-top:3px">
-                 <input type="file" id="customFile" class="form-control"  style="height:100%" placeholder="">
+                 <input type="file" id="customFile" class="form-control"  style="height:100%" (change)="addCv($event)">
                   </div>
           
           </div>
@@ -148,7 +141,9 @@
           <div class="form-group">
               <label class=" control-label">Vos expériences</label>
               <div class="col-sm-10">
-                <textarea class="form-control"  name="experience" id="experience" placeholder="" rows="4" data-rule="required" data-msg="Please write something for us"></textarea>
+                  <textarea class="form-control" id="exampleFormControlTextarea1"  formControlName="experience" rows="4"></textarea>
+                
+  
               </div>
           </div>
           <hr style="height:2px;border-width:0;color:rgb(255, 255, 255);background-color:rgb(255, 255, 255)">
@@ -157,7 +152,7 @@
                           
             <label for="inputName">Type de demande</label>
             <div  class="form-check">
-            <input class="form-check-input" type="radio" formControlName="type" value="stage" id="stage" placeholder="type">
+            <input class="form-check-input" type="radio"  value="stage" id="stage" placeholder="type" formControlName="type">
             <label class="col-sm-2 col-sm-2 control-label" for="flexRadioDefault1">
               Stage
             </label>
@@ -173,11 +168,11 @@
           
         </div>
 
-      </form>
-      <button style="margin-left:150px ;" class="btn-save">Postuler</button>
+      </div>
+      <button style="margin-left:150px ;" class="btn-save"  (click)="submitcondidate()">Postuler</button>
     </div>
 
   </div>
 
   
-</div>
+</form>

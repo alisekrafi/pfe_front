@@ -1,24 +1,18 @@
-<!-- Main Sidebar Container -->
-<aside class="main-sidebar .sidebar-collapse sidebar-dark-primary elevation-4" style="top:56px;">
-    <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="assets/hormiga2.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">{{user.employe.nom}} {{user.employe.prenom}}</span>
-    </a> 
-  
-    <!-- Sidebar -->
-    <div class="sidebar">
+
+<aside class="main-sidebar .sidebar-collapse sidebar-dark-primary elevation-4" style="top:65px;">
+
+    <div class="sidebar" *ngFor="let e of employes2">
       <!-- Sidebar user panel (optional) -->
-      <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="assets/hormiga2.jpg" class="img-circle elevation-2" alt="User Image">
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div >
+        <img src="http://localhost:5000/employe/image/{{e.images.url}}" routerLink="/dashboard_emp/information"class="img-circle"  alt="User Image">
+      </div>
+        <div class="info"> 
+          <a routerLink="/dashboard_emp/profile"class="d-block">{{e.nom}}  {{e.prenom}}</a>
         </div>
-        <div class="info">
-          <a routerLink="../liste_condidate" class="d-block">nom </a>
-        </div>
-      </div> -->
-  
-      <!-- Sidebar Menu -->
+      </div>
+   
+      <!-- Sidebar Menu --> 
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
           <!-- Add icons to the links using the .nav-icon class
@@ -28,29 +22,41 @@
             
             <ul class="nav nav-treeview">
               <li class="nav-item">
+                <a routerLink="/dashboard_emp/information" class="nav-link">
+                  <i class="fa fa-tachometer" aria-hidden="true"></i>
+                  <p>     Dashboard</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="/dashboard_emp/profile" class="nav-link">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                  <p>     Profile </p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a routerLink="/dashboard_emp/annonce_emp" class="nav-link">
                   <i class="fa fa-th-list" aria-hidden="true"></i>
                   <p>     Annonce </p>
                 </a>
               </li>
+           
               
-             
             </ul>
           </li>
           <li class="nav-item">
             <a routerLink="/dashboard_emp/conge_emp" class="nav-link">
               <i class="fa fa-th-list" aria-hidden="true"></i>
   
-              <p>   Demande de conge</p>
+              <p>   Congés</p>
             </a>
           </li>
           <li class="nav-item">
             <a routerLink="/dashboard_emp/meeting_emp" class="nav-link">
               <i class="fa fa-calendar" aria-hidden="true"></i>
-              <p>     Réunion </p>
+              <p>     Réunions </p>
             </a>
           </li>
-          
+           
          
         </ul>
       </nav>

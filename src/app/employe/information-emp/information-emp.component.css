@@ -1,0 +1,116 @@
+.aa{
+    width: 12px;
+    margin-top: 5%;
+    height: auto;
+  }
+  h1{
+      text-align: center;
+      /* font-size: 17px; */
+      color: black;
+      font-style: italic;
+      font-weight: bold;
+      margin-top: 2%;
+      font-weight: 2000;
+    cursor: pointer;
+      font-family: "Montserrat";
+    }
+    h2{
+      text-align: center;
+      /* font-size: 17px; */
+      color: rgb(70, 30, 218);
+      font-style:normal;
+      font-weight: bold;
+      margin-top: 2%;
+      font-weight: 900;
+    cursor: pointer;
+      font-family: "Montserrat";
+    }
+  .closebtn {
+    padding-left: 10px;
+    color: #888;
+    font-weight: bold;
+    float: right;
+    cursor: pointer;
+  }
+  
+  .closebtn:hover {
+    color: #000;
+  }
+  .tooltipe:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .liste {
+    height: 200px;
+    overflow-y: scroll;
+  }
+  .liste::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 4px;
+  }
+  .liste::-webkit-scrollbar-thumb {
+    background: #f21e4e;
+    border-radius: 4px;
+  }
+  
+  .container {
+    margin-left: 300px;
+    width: 75%;
+  }
+  /* #content {
+    margin-left: 300px;
+    width: 75%;
+  } */
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-shadow: 0 2px 10px rgba(64, 64, 64, 0.7);
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+    margin-top: 3rem;
+  }
+  td,
+  th {
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 16.5px;
+  }
+  th {
+    background-color: #4ecdc4;
+    color: #fafafa;
+    font-family: "Open Sans", Sans-serif;
+    font-weight: 200;
+    text-transform: uppercase;
+  }
+  
+  /* td {
+    margin-top: 5%;
+  } */
+  /* tr {
+    width: 100%;
+    background-color: #fafafa;
+    font-family: "Montserrat", sans-serif;
+  } */
+  tr:nth-child(even) {
+    background-color: #eeeeee;
+  }
+  
+  .container2 {
+    height: 500px;
+    overflow-y: scroll;
+  }
+  .container::-webkit-scrollbar {
+    width: 4px;
+  }
+  .container::-webkit-scrollbar-track {
+    border-radius: 4px;
+  }
+  input {
+    width: 100%;
+  }
+  .container::-webkit-scrollbar-thumb {
+    background: #090c0c;
+    border-radius: 4px;
+  }
+  

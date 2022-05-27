@@ -26,11 +26,11 @@ export class ListeEmpComponent implements OnInit {
   employe: any;
   submitted=false
   ngOnInit(): void {  
-    this.date = new Date().toISOString().slice(0, 10);
-    console.log("date",this.date)
+    // this.date = new Date().toISOString().slice(0, 10);
+    // console.log("datedd",this.date)
     this.employeForm = this.formbuilder.group({
       _id:[''],
-      cin:['', [Validators.required, Validators.minLength(8)]],
+      cin:['', [ Validators.required, Validators.min(10000000),Validators.max(99999999)]],
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
       date_nais: ['', Validators.required],
@@ -51,20 +51,20 @@ export class ListeEmpComponent implements OnInit {
     this.getb();
   }
   reset(e: any) {
-    console.log("dd",e);
-    // console.log("emp",this.employeForm.value)
-    // console.log("emp22é",e.nom)
+  
     this.employeForm.setValue(e);
     
   }
-  mise() {
+  mise() {this.submitted=true
+  if(this.employeForm.valid){
+  
   
     
     this.employeService.updatdata(this.employeForm.value).subscribe(res => {
       this.getb()
       this.employeForm.reset();
     }) 
-  }
+  }}
   delete() {
     console.log("eeeee",this.employeForm.value._id,this.employeForm.value.nom)
     this.employeService.deletedata(this.employeForm.value).subscribe(res => {
@@ -78,8 +78,8 @@ export class ListeEmpComponent implements OnInit {
       this.employes = data
       console.log(data);
 
-    });
-
+    }); 
+ 
   }
   getbbyid(e : any) {
     

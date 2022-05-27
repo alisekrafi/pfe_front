@@ -1,0 +1,71 @@
+<div class="container" *ngIf="employe" >
+
+   
+        
+  <div class="row">
+
+      
+      <div class="col-lg-5">
+      <div id="ui">
+ 
+        <form  [formGroup]="imageForm" >
+        <h3><i class="fa fa-angle-right"></i> Modifier votre photo de profil</h3>
+        <img  src="http://localhost:5000/employe/image/{{employe.images.url}}"  alt="user" width="150" class="img-circle">
+        
+           
+          <br>
+
+          <input class="select" type="file" (change)="change($event)" accept="image/*" >
+      
+          <br>
+          <br>
+          <button type="submit"  class="btn-photo" (click)="updateImage()" >
+            Modifier
+          </button>
+          
+
+      </form>
+
+      </div>
+    </div>
+      <div class="col-lg-7">
+          <div id="ui">
+              <form [formGroup]="changeForm">
+              <h3><i class="fa fa-angle-right"></i> Modifier votre mot de passe
+              </h3>
+              <br>
+              
+
+
+              <label for="fname">Old password</label>
+            <input type="password" formControlName="password" class="form-control">
+
+              <label for="fname">New password</label>
+            <input type="password" formControlName="newPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && changeForm.controls['newPassword'].errors }">
+            <div *ngIf="submitted && changeForm.controls['newPassword'].errors" class="invalid-feedback">
+              <div *ngIf="changeForm.controls['newPassword'].errors['required']">ce champ est obligatoire</div>
+              <!-- <div *ngIf="employeForm.controls['password'].errors && !employeForm.controls['password'].errors['required']"> Name must be at least 5 characters long.</div> --></div>
+                              
+                  
+                
+          
+              <br>
+              <br>
+              <button type="submit"  class="btn" (click)="update()">
+                  Enregistrer les modifications
+                </button>
+
+          </form>
+          </div>
+
+      
+
+  </div>
+
+  <div class="col-lg-1"></div>
+
+  </div>
+  
+      
+  
+</div>

@@ -16,7 +16,11 @@ h4 {
     color: #fff;
     font-size: 18px;
 }
-
+.img-circle{
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+  }
 label {
    
     font-family: 'Montserrat',Sans-serif;

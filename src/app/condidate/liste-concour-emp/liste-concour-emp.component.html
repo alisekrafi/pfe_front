@@ -1,0 +1,245 @@
+<div class="container" >
+    <div class="d-flex justify-content-end " style="margin-top:12px">
+        <button mat-raised-button  class=" btn1 my-2 my-sm-0" data-bs-toggle="modal"
+        data-bs-target="#exampleModal1">Ajouter concour</button>
+    </div>
+     
+
+        <!-- moadal d'ajoute -->
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Details</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <form [formGroup]="concourForm"class="form-panel">
+            
+                  <div class="form-group">
+                    <label class="col-sm-2 col-sm-2 control-label" >Titre</label>
+                    <div class="col-sm-10">
+                      <input type="text"  name="titre" id="titre"  formControlName="titre" placeholder="titre">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 col-sm-2 control-label" >Date de debut</label>
+                    <div class="col-sm-10">
+                      <input type="Date"  name="date" id="date"  formControlName="date_debut" placeholder="date">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 col-sm-2 control-label" >Date de fin</label>
+                    <div class="col-sm-10">
+                      <input type="Date"  name="date" id="date"  formControlName="date_fin" placeholder="date">
+                    </div>
+                  </div>
+                 
+                </form> 
+                
+                <div class="modal-footer">
+                  <div class="click">
+                    <button _ngcontent-roy-c3="" 
+                          class="btn1 my-2 my-sm-0" 
+                          type="submit" 
+                          (click)="ajouteconcour()"
+                           data-bs-dismiss="modal">Ajouter</button>
+                    <button _ngcontent-roy-c3="" 
+                          class="btn1  my-2 my-sm-0" 
+                          type="submit" data-bs-dismiss="modal"
+                          >Annuler</button>
+                  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+   
+    <div *ngIf="concours.length==0; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+      <h1 >Vous n'avez aucune Concours.</h1>
+    </ng-template>
+    <ng-template #elseBlock>
+    <h4 style="margin-top: 25px;margin-left: 50px;"><i class="fa fa-angle-right"></i> Liste des concours</h4>
+  
+    <div class="container2">
+    <table class="table table-striped" >
+  
+      <thead class="thead-inverse">
+   
+        <tr>
+          <th scope="col">Titre</th>
+          <th scope="col">date_debut</th>
+          <th scope="col">date_fin</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of concours">
+  
+          <td>{{e.titre}}</td>
+          <td>{{e.date_debut}}</td>
+          <td>{{e.date_fin}}</td>
+         
+  
+   
+          <td>
+            <div>
+              <button mat-raised-button class="action-button btn-success" data-bs-toggle="modal" 
+                data-bs-target="#exampleModal4" aria-hidden="true" ><i class="fa fa-eye" aria-hidden="true"></i></button>
+  
+              <button mat-raised-button class="action-button btn-info" data-bs-toggle="modal" 
+                data-bs-target="#exampleModal3"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+  
+              <button mat-raised-button class="action-button btn-danger" data-bs-toggle="modal" 
+                data-bs-target="#exampleModal2" aria-hidden="true" ><i class="fa fa-trash"
+                  aria-hidden="true"></i></button>
+  
+  <!-- model du supp -->
+              <!-- <div class="modal" id="exampleModal2" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+  
+                    <div class="modal-header">
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      êtes-vous sûr de vouloir supprimer
+                    </div>
+  
+  
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+  
+                      <button type="button" class="btn btn-danger" aria-label="Close" data-bs-dismiss="modal"
+                        (click)="delete()"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                    </div>
+  
+                  </div>
+                </div>
+              </div> -->
+  <!-- fin du model du supp -->
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </ng-template>
+ 
+    <!-- fin model de update -->
+  
+    <!-- model du consulter -->
+<!--     
+    <div class="modal"  id="exampleModal4" aria-hidden="true" >
+      
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+  
+          <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+        <div  *ngFor="let user of employes2">  
+     <div class="wrapper" id="4" >
+      <div class="left"  > 
+        <img src="http://localhost:5000/employe/image/{{user.images.url}}"   style="margin-left: 340px;"alt="user" width="120" class="img-circle">
+        <br>
+        <br>
+        <h3 style="margin-left: 225px;">Informations de l'employe</h3>
+        
+      </div>
+            
+      <div class="right" style="margin-left: 30px;">
+        <div class="info" >
+             
+          <div class="info_data">
+            <div class="data">
+              <h4>Nom</h4>
+              <p> {{user.nom}}</p>
+          </div>
+                <div class="data">
+                  <h4>Prenom</h4>
+                  <p> {{user.prenom}}</p>
+              </div>
+              <div class="data">
+                <h4>Role</h4>
+                <p> {{user.role}}</p>
+            </div>
+            <div class="info_data">
+              <div class="data">
+                <h4>Adresse</h4>
+                <p> {{user.adresse}}</p>
+            </div>
+           
+            
+    
+        </div>
+      </div>
+        <div class="info">
+             
+          <div class="info_data">
+            <div class="data">
+              <h4>Cin</h4>
+              <p> {{user.cin}}</p>
+          </div>
+                <div class="data">
+                  <h4>Date de Nais</h4>
+                  <p> {{user.date_nais}}</p>
+              </div>
+              <div class="data">
+                <h4>Tel</h4>
+                <p> {{user.tel}}</p>
+      </div>
+      </div>
+              
+      <div class="projects">
+    
+         
+          <div class="info_data">
+            <div class="data">
+              <h4>Genre</h4>
+              <p> {{user.genre}}</p>
+            </div>
+            <div  class="data">
+              <h4 >Salaire</h4>
+              <p> {{user.salaire}}</p>
+            </div>
+            <div class="data">
+              <h4>Email</h4>
+              <p> {{user.email}}</p>
+            </div>
+           
+            
+    
+          </div>
+            
+            
+        </div>
+        
+     
+        
+      </div>
+    
+      
+    
+    </div>
+    
+  
+          </div>
+        
+  
+  
+        
+  
+        </div>
+        <button class="bbtn" printSectionId="4" printTitle ="{{user.nom}}{{user.prenom}}" [useExistingCss] =" false" ngxPrint >Exporter les informations en pdf</button>
+          </div> 
+      </div>
+    </div>
+   
+  </div>
+    </div> -->
+</div>

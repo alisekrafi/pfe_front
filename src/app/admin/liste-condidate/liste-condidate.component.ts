@@ -14,9 +14,8 @@ import { Condidate } from '../modal/condidate';
 export class ListeCondidateComponent implements OnInit {
 
   condidates: any[] = [];
-
-  condidateForm!: FormGroup;
-  reponseForm!: FormGroup;
+  c!:Condidate;
+  
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -27,36 +26,9 @@ export class ListeCondidateComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.condidateForm = this.formbuilder.group({
-      _id: [''],
-      cin: [''],
-      nom: [''],
-      prenom: [''],
-      date_nais: [''],
-      email: [''],
-      tel: [''],
-      adresse: [''],
-      genre: [''],
-      __v: [''],
-      role: [''],
-      type: [''],
-    });
-    this.reponseForm = this.formbuilder.group({
-      titre: [''],
-      text: [''],
-      to: [''],
-      
-    });
-
-
-    this.getb();
+  this.getb();
   }
-  reset(e: Condidate) {
-    
-    this.condidateForm.setValue(e);
-    
-    
-  }
+ 
   getb() {
     this.condidatservice.getdata().subscribe((data) => {
       this.condidates = data
@@ -65,25 +37,21 @@ export class ListeCondidateComponent implements OnInit {
     }); 
 
   }  
+  reset(e: Condidate) {
+    
+   this.c=e;
+   console.log("e",e);
+   
+  }
   delete() {
     
-    console.log("aaaaaaaa",this.condidateForm.value._id)
-    
-    this.condidatservice.deletedata(this.condidateForm.value._id).subscribe(res => {
+    console.log("c",this.c);
+    this.condidatservice.deletedata(this.c).subscribe(res => {
     this.getb()
     })
 
   }
-  sedmail(){
-    console.log("vall",this.condidateForm.value)
-    // console.log("mailaa",this.condidateForm.value.email)
-    // console.log("mail",this.reponseForm.value)
-    this.condidatservice.sendmail(this.reponseForm.value).subscribe(res => {
-      console.log("res",res)
 
-      this.reponseForm.reset()
-    })
-  }
 }
 
 

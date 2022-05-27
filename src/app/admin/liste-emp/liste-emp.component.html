@@ -1,10 +1,21 @@
 <div class="container" >
-  <h4 style="margin-top: 50px;margin-left: 50px;"><i class="fa fa-angle-right"></i> Liste des employes</h4>
+  <div class="d-flex justify-content-end " style="margin-top:12px">
+    <button routerLink="/dashboard_admin/ajout_emp" class=" btn1 my-2 my-sm-0">Ajouter employé</button>
+</div>
+ 
+ 
+  <div *ngIf="employes.length==0; then thenBlock else elseBlock"></div>
+  <ng-template #thenBlock>
+    <h1 >Vous n'avez aucune Demande de congés.</h1>
+  </ng-template>
+  <ng-template #elseBlock>
+  <h4 style="margin-top: 25px;margin-left: 50px;"><i class="fa fa-angle-right"></i> Liste des employes</h4>
+
   <div class="container2">
   <table class="table table-striped" >
 
     <thead class="thead-inverse">
-
+ 
       <tr>
         <th scope="col">Nom</th>
         <th scope="col">Prenom</th>
@@ -67,6 +78,7 @@
     </tbody>
   </table>
 </div>
+</ng-template>
 <!-- model de mise ajour -->
   <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -81,7 +93,8 @@
                <label for="cin">Cin</label>
               <input type="number" id="cin" formControlName="cin" class="form-control"[ngClass]="{ 'is-invalid': submitted && employeForm.controls['cin'].errors }">
               <div *ngIf="submitted && employeForm.controls['cin'].errors" class="invalid-feedback">
-                <div *ngIf="employeForm.controls['cin'].errors['required']">ce champ est obligatoire</div></div>
+                <div *ngIf="employeForm.controls['cin'].errors['required']">ce champ est obligatoire</div>
+                <div *ngIf="employeForm.controls['cin'].errors && !employeForm.controls['cin'].errors['required']">CIN doit comporter  8 caractères.</div></div>
             </div>
             <div class="form-group">
               <label for="inputName">Employe Nom</label>
@@ -102,7 +115,7 @@
                 <div *ngIf="employeForm.controls['email'].errors['required']">ce champ est obligatoire</div>
                 <div *ngIf="employeForm.controls['email'].errors && !employeForm.controls['email'].errors['required']">S'il vous plaît, mettez une adresse email valide</div></div>
             </div>
-            <div class="form-group">
+            <div class="form-group"> 
               <label>Tel</label>
               <input type="number" id="tel" formControlName="tel" class="form-control"[ngClass]="{ 'is-invalid': submitted && employeForm.controls['tel'].errors }">
               <div *ngIf="submitted && employeForm.controls['tel'].errors" class="invalid-feedback">
@@ -181,7 +194,7 @@
       <img src="http://localhost:5000/employe/image/{{user.images.url}}"   style="margin-left: 340px;"alt="user" width="120" class="img-circle">
       <br>
       <br>
-      <h3 style="margin-left: 225px;">Information de l'employe</h3>
+      <h3 style="margin-left: 225px;">Informations de l'employe</h3>
       
     </div>
           
@@ -225,26 +238,13 @@
             <div class="data">
               <h4>Tel</h4>
               <p> {{user.tel}}</p>
-          </div>
-          <div class="info_data">
-            <div class="data">
-              <h4>Genre</h4>
-              <p> {{user.genre}}</p>
-          </div>
-         
-          
-  
-      </div>
+    </div>
     </div>
             
     <div class="projects">
   
        
         <div class="info_data">
-          <div class="data">
-            <h4>Email</h4>
-            <p> {{user.email}}</p>
-          </div>
           <div class="data">
             <h4>Genre</h4>
             <p> {{user.genre}}</p>
@@ -253,6 +253,11 @@
             <h4 >Salaire</h4>
             <p> {{user.salaire}}</p>
           </div>
+          <div class="data">
+            <h4>Email</h4>
+            <p> {{user.email}}</p>
+          </div>
+         
           
   
         </div>
@@ -273,18 +278,13 @@
       
 
 
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-
-          <button type="button" class="btn btn-danger" aria-label="Close" data-bs-dismiss="modal"
-            (click)="delete()"><i class="fa fa-trash" aria-hidden="true"></i></button>
-        </div> -->
+      
 
       </div>
-      <button class="bbtn" printSectionId="4" printTitle ="{{user.nom}}{{user.prenom}}" [useExistingCss] =" true " ngxPrint >Exporter les informations en pdf</button>
+      <button class="bbtn" printSectionId="4" printTitle ="{{user.nom}}{{user.prenom}}" [useExistingCss] =" false" ngxPrint >Exporter les informations en pdf</button>
         </div> 
     </div>
   </div>
-  <!-- fin model du  consulter -->
+ 
 </div>
   </div>

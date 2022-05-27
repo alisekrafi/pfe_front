@@ -1,14 +1,21 @@
 <div data-bs-spy="scroll">
     <div class="container">
-     
-      <table class="table table-striped">
+      <h4 style="margin-top: 48px;"><i class="fa fa-angle-right"></i> Liste des réunions</h4>
+      <div *ngIf="meetings.length==0; then thenBlock else elseBlock"></div>
+      <ng-template #thenBlock>
+        <h1 >Vous n'avez aucune réunion.</h1>
+      </ng-template>
+      <ng-template #elseBlock>
+        <div class="container2">
+      <table class="table table-striped" >
         <thead class="thead-inverse">
     
           <tr>
+            
             <th scope="col">Titre</th>
             <th scope="col">Sujet</th>
             <th scope="col">date</th>
-           
+            <th scope="col">Horaire</th>
           </tr>
         </thead>
         <tbody>
@@ -17,8 +24,11 @@
             <td>{{e.titre}}</td>
             <td><p>{{e.sujet}}</p></td>
             <td>{{e.date}}</td>
+            <td>{{e.time}}</td>
           </tr>
         </tbody>
       </table>
+    </div>
+    </ng-template>
     </div>
 </div>

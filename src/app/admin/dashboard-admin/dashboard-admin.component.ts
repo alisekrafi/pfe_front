@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmpolyeService } from 'src/app/admin/services/empolye.service';
+
 
 @Component({
   selector: 'app-dashboard-admin',
@@ -10,5 +10,7 @@ export class DashboardAdminComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
+  
 }

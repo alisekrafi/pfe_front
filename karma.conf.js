@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/pfe'),
+      dir: require('path').join(__dirname, './coverage/RHormiga'),
       subdir: '.',
       reporters: [
         { type: 'html' },

@@ -12,7 +12,11 @@
 body {
   background: #fff;
 }
-
+.img-circle{
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
 .wrapper {
   margin-top: 50px;
   position: absolute;

@@ -1,7 +1,7 @@
 
    <div class="wrapper"  *ngFor="let user of employes">
     <div class="left" > 
-      <img src="http://localhost:5000/employe/image/{{user.images.url}}"  alt="user" width="150" class="img-circle">
+      <img src="http://localhost:5000/employe/image/{{user.images.url}}"  alt="user"  class="img-circle">
       <br>
       <br>
       <h4>{{user.prenom}} {{user.nom}} </h4>
@@ -12,7 +12,7 @@
     <div class="right">
   
       <div class="info">
-            <h3>les information</h3>
+            <h3>les informations</h3>
         <div class="info_data">
           <div class="data">
             <h4>Cin</h4>
@@ -46,7 +46,7 @@
             <p> {{user.genre}}</p>
           </div>
           <div  class="data">
-            <h4 >Salary</h4>
+            <h4 >Salaire</h4>
             <p> {{user.salaire}}</p>
           </div>
           
@@ -55,7 +55,7 @@
           
           
       </div>
-      <button class="btn" routerLink="/dashboard_admin/info"  > Edit your information</button>
+      <button class="btn" routerLink="/dashboard_admin/info"  > Modifier vos informations</button>
       
     </div>
   

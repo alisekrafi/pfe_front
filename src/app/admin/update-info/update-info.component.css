@@ -23,14 +23,14 @@ h3 {
     font-size: 24px;
 }
 .container {
-    margin-left: 300px;
+    margin-left: 400px;
     width: 75%;
   }
 
-.btn{
+.btn{ 
     background-color: #4ECDC4;
    
-    margin-left: 28%;
+    margin-left: 10%;
     top:80%;
     width: 300px;
     height: 30px;

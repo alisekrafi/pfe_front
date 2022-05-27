@@ -1,0 +1,49 @@
+<div class="container">
+    <h1 >Bienvenue  {{user.employe.nom}} {{user.employe.prenom}}</h1>
+    <br>
+    <h2>{{date}}</h2>
+  <div style="margin-top: 200px;margin-left: 10px;"class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+          <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{meeting}}</h3>
+                <p>Réunions pour aujourd'hui</p>
+              </div>
+              <div class="icon">
+                  <i class="fa fa-video-camera" aria-hidden="true"></i>
+              </div>
+              <a routerLink="/dashboard_emp/meeting_emp" class="small-box-footer">
+                Plus d'information  <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+              </a> 
+            </div>
+      </div>
+      <div class="col">
+          <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{conge}}</h3>
+                <p>Demande de congés en attente</p>
+              </div>
+              <div class="icon">
+                  <i class="fa fa-users" aria-hidden="true"></i>
+              </div>
+              <a routerLink="/dashboard_emp/conge_emp"class="small-box-footer">Plus d'information  <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+              </a>
+            </div>
+      </div>
+      <div class="col">
+          <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{annonce}}</h3>
+                <p>Annonces</p>
+              </div>
+              <div class="icon">
+                  <i class="fa fa-bullhorn" aria-hidden="true"></i>
+              </div>
+              <a routerLink="/dashboard_emp/annonce_emp" class="small-box-footer">
+                  Plus d'information  <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+              </a>
+            </div>
+      </div>
+ 
+    </div>
+  </div>

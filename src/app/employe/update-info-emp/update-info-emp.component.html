@@ -1,0 +1,81 @@
+<div class="container" >
+    <div class="d-flex justify-content-end " style="margin-top:12px">
+        <button mat-raised-button  class=" btn my-2 my-sm-0" routerLink="/dashboard_emp/pwd_emp" >Paramètre avancée</button>
+    </div>
+    
+   
+        
+    <div class="row">
+
+        
+        <div class="col-lg-1"></div>
+ 
+        <div class="col-lg-6">
+            <div id="ui">
+                <form [formGroup]="employeForm" class="form-panel">
+                <h3><i class="fa fa-angle-right"></i> Informations personnelles</h3>
+                <br>
+                    
+                <!-- <div class="row">
+                    <div class="col-lg-6">
+                        <label for="fname">Prénom</label>
+                        <input type="text" name="prenom" class="form-control"formControlName="prenom" [ngClass]="{ 'is-invalid': submitted && employeForm.controls['prenom'].errors }">
+                        <div *ngIf="submitted && employeForm.controls['prenom'].errors" class="invalid-feedback">
+                          <div *ngIf="employeForm.controls['prenom'].errors['required']">ce champ est obligatoire</div></div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <label for="fname">Nom</label>
+                        <input type="text" name="nom" class="form-control" formControlName="nom" >
+                    </div>
+                </div> -->
+                <div class="row"> 
+                    <!-- <div class="col-lg-6">
+                        <label for="fname">CIN</label>
+                <input type="number" name="cin" class="form-control" formControlName="cin" > -->
+                    <!-- </div> -->
+             <div class="col-lg-6">
+                <label for="fname">email</label>
+                <input type="text" name="email" class="form-control" formControlName="email">
+            </div>
+        </div>
+                <div class="row">
+                    <!-- <div class="col-lg-6">
+                        <label for="fname">Date de naissance</label>
+                        <input type="date" name="date" class="form-control" formControlName="date_nais" >
+                    </div> -->
+
+                    <div class="col-lg-6"  >
+                        <label for="fname">Tél</label>
+                        <input type="number" name="tel"  class="form-control" formControlName="tel" >
+                    </div>
+                </div>
+
+                <div class="row" >
+                    <div class="col-lg-6">
+                        <label for="fname">Adresse</label>
+                        <input type="text" name="adresse" class="form-control" formControlName="adresse" >
+                     </div>
+                        
+                    
+                   
+                </div>
+                <br>
+                
+                <button type="submit"  class="btn" (click)="update()">
+                    Enregistrer les modifications
+                  </button>
+            </form>
+            </div>
+
+        
+
+    </div>
+
+    
+
+    </div>
+    
+   
+  </div> 
+ 

@@ -11,26 +11,29 @@ import { MeetingService } from 'src/app/admin/services/meeting.service';
   styleUrls: ['./meeting.component.css']
 })
 export class MeetingComponent implements OnInit {
-  teams:any[]=[]
-  emps:any=[]
-  employes:any[]=[]
-  visible=false
   meetingForm!: FormGroup;
   meetingaForm!: FormGroup;
+  
+  AllEmployes:any[]=[]
+  employesAjouter:any[]=[]
+  employesAjouter2:any[]=[]
+  
+  emps:any=[]
+  
+  visible=false
+
   submitted=false;
  
   meetings:Meeting[]=[];
-
-
-
   constructor( private formbuilder: FormBuilder,
     private http:HttpClient,private employeService:EmpolyeService,private meetingService:MeetingService) { }
   ngOnInit(): void {
     this.meetingaForm = this.formbuilder.group({
-      // _id: [''], 
+     // _id: [''], 
       titre: [''], 
-     sujet: [''], 
+      sujet: [''], 
       date: [''], 
+      time: [''], 
       equipe:[[]],
       __v:[],
 
@@ -38,24 +41,23 @@ export class MeetingComponent implements OnInit {
     this.meetingForm = this.formbuilder.group({
       _id: [''], 
       titre: [''], 
-     sujet: [''], 
+      sujet: [''], 
       date: [''], 
-      equipe:[],
+      time: [''],
+      equipe:[[]],
       __v:[],
 
   })
-  this.getb();
-  this.getEmployes();
+  this.getAllEmployes();
+  this.getMeeting();
 }
    
-
-  getEmployes(){
+  getAllEmployes(){
     this.employeService.getdata().subscribe((res:any)=>{
-      res.forEach((element:Employe) => {
-        this.employes.push(element)
-      });
+      this.AllEmployes=res
     })
-  } 
+  }
+
   // zone
   blure(){
     this.emps=[]
@@ -65,68 +67,97 @@ export class MeetingComponent implements OnInit {
   // recherche
   input(e:any){
     this.emps=[]
-    
-    
-    this.employes.forEach(element => {
+    this.AllEmployes.forEach(element => {
       if(element.nom.search(e.target.value)!=-1){
         this.emps.push(element)
         this.visible=true
       }
     });
   }
-  addChip(e:any){
-    if(this.teams.indexOf(e)==-1||this.teams.length==0){
+  
+  addEmploye(e:any){
+    if(this.employesAjouter.indexOf(e)==-1||this.employesAjouter.length==0){
       this.visible=false
-      this.teams.push(e._id)
+      this.employesAjouter.push(e)
     }
   }
-  removeChip(e:Employe){
-    this.teams.splice(this.teams.indexOf(e),1)
-  }
-  getb() {
+  addEmploye2(e:any){
+ 
     
+    let exist=false
+    this.employesAjouter2.forEach(element => {
+      if(element._id==e._id) exist=true
+
+    })
+    if(!exist){
+      this.visible=false
+      this.employesAjouter2.push(e)
+    }
+  }
+  removeEmploye(e:Employe){
+    this.employesAjouter.splice(this.employesAjouter.indexOf(e),1)
+  }
+  removeEmploye2(e:Employe){
+    this.employesAjouter2.splice(this.employesAjouter2.indexOf(e),1)
+  }
+  getMeeting() {
     this.meetingService.getdata().subscribe((data) => {
       this.meetings = data
       console.log(data);
-      // console.log("dddddddddddddddddddddddddddddddddd",data[0].equipe);
     }); 
   } 
-  reset(e: Meeting) { 
-   
-      this.teams=e.equipe;
+  reset(e:any){
+    console.log("e",e);
     
-  console.log(e.temp);
-
-    this.meetingForm.setValue(e);
-    this.meetingForm.value.equipe=""
-    console.log(this.meetingForm.value);
-    
+    this.meetingForm.setValue(e)
   }
-  mise() {
-    console.log("emp",this.meetingForm.value.equipe);
+  updateModel(e: Meeting) {
+    this.employesAjouter2=[]
+    e.equipe.forEach(element => {
+      this.employeService.getempbyid(element).subscribe(res=>{
+        this.employesAjouter2.push(res[0])
+      })
+    })    
+    this.meetingForm.setValue(e);
+}
+  update() {
+    console.log("update",this.meetingForm.value);
+    
+    this.meetingForm.value.equipe=[]
+    this.employesAjouter2.forEach(element => {
+      this.meetingForm.value.equipe.push(element._id)
+    });
+    // console.log("value",this.meetingForm.value);
+    
     this.meetingService.updatdata(this.meetingForm.value).subscribe(res => {
       console.log("empaa",this.meetingForm.value.equipe);
-      this.getb()
-    }) 
+      this.getMeeting()
+      this.meetingaForm.reset()
+    })
+
   } 
   delete() {
     
+    // console.log("delete",this.meetingForm.value.titre);
+    
     this.meetingService.deletedata(this.meetingForm.value._id).subscribe(res => {
-
-  this.getb()
+    this.getMeeting()
     })
  
   }  
+
   ajoutemeeting(){
-  
     this.submitted = true;
-    this.meetingaForm.value.equipe=this.teams;
+    console.log(this.meetingaForm.value);
+    this.meetingaForm.value.equipe=[]
+    this.employesAjouter.forEach(element => {
+      this.meetingaForm.value.equipe.push(element._id)
+    });
     console.log(this.meetingaForm.value)
     this.http.post("http://localhost:5000/reunion/add",this.meetingaForm.value).subscribe((res:any)=>{
-      this.getb()
+      this.getMeeting()
       this.meetingaForm.reset()
     })
-    
   }
 }
 

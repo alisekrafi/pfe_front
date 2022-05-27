@@ -15,7 +15,7 @@ export class AuthService {
     }
 
    }
- 
+  
 
   login(f:any){
     return this.http.post("http://localhost:5000/auth/login",f)
@@ -27,11 +27,11 @@ console.log("headers log out",this.headers);
     return this.http.post("http://localhost:5000/auth/logout",{},{headers:this.headers})
 
   }
-  forgetPassword(email:any){
 
-    return this.http.post("http://localhost:5000/auth/forgot-password",{email:email})
-
+  forgetPassword(f:any){
+    return this.http.post("http://localhost:5000/auth/forgot-password",f)
   }
+ 
   resetPassword(password:any,token:any){
     console.log(token);
 
@@ -40,8 +40,16 @@ console.log("headers log out",this.headers);
   }
   changepwd(p:any){
 
+    this.headers = { 'token': sessionStorage.getItem('token')||""}
     
         return this.http.post("http://localhost:5000/auth/changePassword",p,{headers:this.headers})
+    
+      }
+  changeImage(image:any){
+ 
+    this.headers = { 'token': sessionStorage.getItem('token')||""}
+    
+        return this.http.post("http://localhost:5000/employe/image",image,{headers:this.headers})
     
       }
 }

@@ -1,0 +1,64 @@
+
+   <div class="wrapper"  *ngFor="let user of employes">
+    <div class="left" > 
+      <img src="http://localhost:5000/employe/image/{{user.images.url}}"  alt="user" class="img-circle">
+      <br>
+      <br>
+      <h4>{{user.prenom}} {{user.nom}} </h4>
+      <h2>{{user.role}}</h2>
+   
+    </div> 
+          
+    <div class="right">
+  
+      <div class="info">
+            <h3>les informations</h3>
+        <div class="info_data">
+          <div class="data">
+            <h4>Cin</h4>
+            <p> {{user.cin}}</p>
+        </div>
+              <div class="data">
+                <h4>Date de Nais</h4>
+                <p> {{user.date_nais}}</p>
+            </div>
+            <div class="data">
+              <h4>Tel</h4>
+              <p> {{user.tel}}</p>
+          </div>
+         
+         
+          
+  
+      </div>
+    </div>
+            
+    <div class="projects">
+  
+       
+        <div class="info_data">
+          <div class="data">
+            <h4>Email</h4>
+            <p> {{user.email}}</p>
+          </div>
+          <div class="data">
+            <h4>Genre</h4>
+            <p> {{user.genre}}</p>
+          </div>
+          <div  class="data">
+            <h4 >Salaire</h4>
+            <p> {{user.salaire}}</p>
+          </div>
+          
+  
+        </div>
+          
+          
+      </div>
+      <button class="btn" routerLink="/dashboard_emp/update_profile"  >Modifier vos informations</button>
+      
+    </div>
+  
+    
+  
+  </div>

@@ -14,6 +14,7 @@ export class ReponseCongeComponent implements OnInit {
 id!:any;
 tab=new Array();
 congeForm!: FormGroup;
+raisonForm!: FormGroup;
   constructor(private route: ActivatedRoute,   private formbuilder: FormBuilder, private CongeService: CongeService,private employeService: EmpolyeService) { }
 
   ngOnInit(): void {
@@ -25,7 +26,10 @@ congeForm!: FormGroup;
        __v:[],
       
    })
-
+   this.raisonForm = this.formbuilder.group({
+    raison_ref:[''],
+    
+ })
 
     this.id=this.route.snapshot.paramMap.get('id');
     console.log("id",this.id);
@@ -55,7 +59,8 @@ congeForm!: FormGroup;
       })
     }
     Refuser(){
-      this.CongeService.refuse(this.id).subscribe((res) => {
+      console.log(this.raisonForm.value.raison_ref);
+      this.CongeService.refuse(this.id,{raison_ref:this.raisonForm.value.raison_ref}).subscribe((res) => {
       console.log("conge refuser");
       
       })

@@ -1,0 +1,103 @@
+<div class="container2">
+<div class="wrapper" *ngIf="candidate">
+    <div class="left">
+        <img src="assets/profil-de-lutilisateur.png" width="150px" alt="user"  class="img">
+        <h5>{{candidate.prenom}} {{candidate.nom}} </h5>
+
+    </div>
+    <div class="right">
+        <div class="info">
+            <h3>Coordonnées</h3>
+            <div class="info_data">
+                <div class="data">
+                    <h4>Email</h4>
+                    <p>{{candidate.email}}</p>
+                </div>
+                <div class="data">
+                    <h4>Tel</h4>
+                    <p>{{candidate.tel}}</p>
+                </div>
+                <div class="data">
+                    <h4>Date de Nais</h4>
+                    <p>{{candidate.date_nais}}</p>
+                </div>
+                <div class="data">
+                    <h4>Genre</h4>
+                    <p>{{candidate.genre}}</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="projects">
+            <h3>Niveau d'étude</h3>
+            <div class="projects_data">
+                <div class="data">
+                    <h4>Niveau</h4>
+                    <p>{{candidate.niveau}}</p>
+                </div>
+                <div class="data">
+                    <h4>Diplôme</h4>
+                    <p>{{candidate.diplome}}</p>
+                </div>
+                <div class="data">
+                    <h4>Université</h4>
+                    <p>{{candidate.universite}}</p>
+                </div>
+                
+            </div>
+        </div>
+        <div class="exp">
+            <h3>Expérience</h3>
+            <div class="exp_data">
+                <div class="data">
+                    <h4>Expérience
+                    </h4>
+                    <p>{{candidate.experience}}</p>
+                </div>
+                <div class="data">
+                    <h4>Type</h4>
+                    <p>{{candidate.type}}</p>
+                </div>
+                
+
+            </div>
+        </div>
+
+        <div class="exp">
+            <h3>Documents 
+            </h3>
+            <div class="exp_data">
+                <div class="data">
+                    <h4>CV</h4>
+                    <p>Cv de condidat
+                         
+                        <a href="http://localhost:5000/condidate/file/{{candidate.cv}}"
+                class="cv"><i class="fa fa-download"></i></a>
+                    </p>
+                </div>
+                <div class="data">
+                    <h4>Lettre de motivation
+                    </h4>
+                    <p>Lettre de motivation
+                        <a href="http://localhost:5000/condidate/file/{{candidate.lettre}}"
+                class="cv"><i class="fa fa-download"></i></a>
+                
+                    </p>
+                    
+                </div>
+                
+
+            </div>
+            <div class="exp_data">
+                <div class="container" >
+                    <a class="btn btn1" (click)="sedmailaccepter()">Envoyer un email de confirmation</a>
+                    <a class="btn btn2" style="margin-left: 30px;"(click)="sedmailrefuser()" >Envoyer un e-mail de refus</a>
+                    </div>
+            </div> 
+        </div> 
+    </div>
+    
+</div>
+
+</div>

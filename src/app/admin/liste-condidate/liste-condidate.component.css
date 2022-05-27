@@ -2,15 +2,15 @@
   margin-left: 300px;
   width: 75%;
 }
-table {
+table,h1 {
   border-collapse: collapse;
   border-spacing: 0;
   box-shadow: 0 2px 10px rgba(64, 64, 64, 0.7);
   border-radius: 12px 12px 0 0;
   overflow: hidden;
   margin-top: 3rem;
-}
-td,
+} 
+td,h1,
 th {
   padding: 15px 20px;
   text-align: center;
@@ -28,7 +28,7 @@ th {
 
   background: #4ecdc4;
 }
-th {
+th,h1 {
   background-color: #4ecdc4;
   color: #fafafa;
   font-family: "Open Sans", Sans-serif;

@@ -14,9 +14,12 @@ export class MeetingEmpComponent implements OnInit {
   token=sessionStorage.getItem('token')||""
   user:any=jwt_decode(this.token)
   constructor(private meetingService:MeetingService) { }
-
+ 
   ngOnInit(): void { 
     this.getb()
+    // console.log("z",this.meetingsings.);
+    
+    
   }
   getb() {
     

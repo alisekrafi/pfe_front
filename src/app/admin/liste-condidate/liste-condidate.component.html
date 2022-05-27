@@ -1,13 +1,18 @@
 <div class="container">
+  <div *ngIf="condidates.length==0; then thenBlock else elseBlock"></div>
+  <ng-template #thenBlock>
+    <h1 >Vous n'avez aucune Demande de conditaure.</h1>
+  </ng-template>
+  <ng-template #elseBlock>
   <h4 style="margin-top: 50px;margin-left: 50px;"><i class="fa fa-angle-right"></i> Liste des condidats</h4>
+
   <div class="container2">
   <table class="table table-striped">
     <thead class="thead-inverse">
-
+ 
       <tr>
         <th scope="col">Nom</th>
         <th scope="col">Prenom</th>
-        <th scope="col">Cin</th>
         <th scope="col">Tel</th>
         <th scope="col">Email</th>
         <th scope="col">Role</th>
@@ -20,7 +25,6 @@
 
         <td>{{e.nom}}</td>
         <td>{{e.prenom}}</td>
-        <td>{{e.cin}}</td>
         <td>{{e.tel}}</td>
         <td>{{e.email}}</td>
         <td>{{e.role}}</td>
@@ -28,8 +32,8 @@
 
         <td>
           <div>
-            <button mat-raised-button class="action-button btn-info" data-bs-toggle="modal" (click)="reset(e)"
-            data-bs-target="#exampleModal1">
+   
+            <button mat-raised-button class="action-button btn-info"  [routerLink]="['/dashboard_admin/profil_condidate',e._id]" >
               <i class="fa fa-pencil" aria-hidden="true"></i>
             </button>
   
@@ -58,59 +62,6 @@
       </div>
     </div>
   </div>
-             <!-- modal de reponse -->
-             <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                  </div>
-                  <form [formGroup]="reponseForm"class="form-panel">
-              
-                    <div class="form-group">
-                      <label class="col-sm-2 col-sm-2 control-label" >Titre</label>
-                      <div class="col-sm-10">
-                        <input type="text"  name="titre" id="titre"  formControlName="titre" placeholder="titre">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-2 col-sm-2 control-label" >to</label>
-                      <div class="col-sm-10">
-                        <input type="mail"  name="email" id="email" value={{condidateForm.value.email}} formControlName="to" >
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-2 col-sm-2 control-label" >Sujet</label>
-                      <div class="col-sm-10">
-                        
-                        <textarea  name="text" id="text" formControlName="text"  placeholder="sujet" rows="4" cols="51">
-                          
-                          </textarea>
-                      </div>
-                    </div> 
-               </form> 
-                  
-                  <div class="modal-footer">
-                    <div class="click">
-                      <button _ngcontent-roy-c3="" 
-                            class="btn1 my-2 my-sm-0" 
-                            type="submit" 
-                            (click)="sedmail()"
-                             data-bs-dismiss="modal">Envoyer</button>
-                      <button _ngcontent-roy-c3="" 
-                            class="btn1  my-2 my-sm-0" 
-                            type="submit" data-bs-dismiss="modal"
-                            >Annuler</button>
-                    
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-             <!-- fin modal de reponse -->
           </div>
          
         </td>
@@ -121,7 +72,7 @@
     </tbody>
   </table>
   </div>
- 
+</ng-template>
 
 
 </div>

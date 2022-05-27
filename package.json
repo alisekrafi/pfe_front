@@ -1,5 +1,5 @@
 {
-  "name": "pfe",
+  "name": "RHormiga",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -26,6 +26,7 @@
     "jspdf": "^2.5.1",
     "jwt-decode": "^3.1.2",
     "ngx-print": "^1.2.1",
+    "ngx-toastr": "^14.3.0",
     "rxjs": "^7.4.0",
     "to-iso-string": "^0.0.2",
     "tslib": "^2.3.0",

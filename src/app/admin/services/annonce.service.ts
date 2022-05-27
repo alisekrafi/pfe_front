@@ -18,5 +18,11 @@ export class AnnonceService {
   deletedata(f: any): Observable<any> {
     return this.httpClient.delete<any>("http://localhost:5000/annonce/" + f,{headers:this.headers})
   }
+
+  count(): Observable<any> {
+    const url = "http://localhost:5000/annonce/count/all"
+    return this.httpClient.get<any>(url,{headers:this.headers});
+  
+  }
   
 } 

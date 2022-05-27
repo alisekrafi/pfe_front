@@ -5,13 +5,13 @@
     <img src="assets/hormiga2.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
     <span class="brand-text font-weight-light">{{user.employe.role}}</span>
   </a> -->
-
+  
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div *ngIf="employes2" >
-      <img src="http://localhost:5000/employe/image/{{employes2}}" class="img-circle elevation-2"  alt="User Image">
+      <img src="http://localhost:5000/employe/image/{{employes2}}" class="img-circle" routerLink="/dashboard_admin/detail" alt="User Image">
     </div>
       <div class="info"> 
         <a routerLink="/dashboard_admin/detail"class="d-block">{{user.employe.nom}}  {{user.employe.prenom}}</a>
@@ -28,6 +28,12 @@
           
           <ul class="nav nav-treeview">
             <li class="nav-item">
+              <a routerLink="/dashboard_admin/information" class="nav-link">
+                <i class="fa fa-tachometer" aria-hidden="true"></i>
+                <p>     Dashboard</p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a routerLink="/dashboard_admin/detail" class="nav-link">
                 <i class="fa fa-user" aria-hidden="true"></i>
                 <p>     Profile</p>
@@ -43,12 +49,12 @@
             
           </ul>
         </li>
-        <li class="nav-item">
-          <a routerLink="/dashboard_admin/ajout_emp" class="nav-link">
+        <!-- <li class="nav-item">
+          <a routerLink="/dashboard_admin/concour" class="nav-link">
             <i class="fa fa-plus-square-o" aria-hidden="true"></i>
-            <p>     Ajouter Employe</p>
+            <p>     Concours</p>
           </a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a routerLink="/dashboard_admin/liste_conge" class="nav-link">
             <i class="fa fa-th-list" aria-hidden="true"></i>
@@ -59,13 +65,13 @@
         <li class="nav-item">
           <a routerLink="/dashboard_admin/meeting" class="nav-link">
             <i class="fa fa-calendar" aria-hidden="true"></i>
-            <p>     Réunion </p>
+            <p>     Réunions</p>
           </a>
         </li>
         <li class="nav-item">
           <a routerLink="/dashboard_admin/annonce" class="nav-link">
             <i class="fa fa-sticky-note-o" aria-hidden="true"></i>
-            <p>     Annonce</p>
+            <p>     Annonces</p>
           </a>
         </li>
         <li class="nav-item">

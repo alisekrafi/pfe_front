@@ -1,8 +1,8 @@
-<div class="d-flex justify-content-end">
-    <button mat-raised-button style="margin-top:12px" class="btn-info" data-bs-toggle="modal"
+<div class="d-flex justify-content-end" style="margin-top:12px">
+    <button mat-raised-button style="margin-top:12px" class=" btn1 my-2 my-sm-0" data-bs-toggle="modal"
     data-bs-target="#exampleModal1">Faire un demande</button>
 </div>
-
+<!-- modal de demande -->
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -13,8 +13,8 @@
         <div class="modal-body">
         </div>
         <form [formGroup]="congeForm"class="form-panel">
-    
-        
+     
+         
           <div class="form-group">
             <label class="col-sm-2 col-sm-2 control-label" >Raison</label>
             <div class="col-sm-10">
@@ -22,8 +22,10 @@
               <textarea  name="raison" id="raison" formControlName="raison"  placeholder="raison" rows="4" cols="51">
                 
                 </textarea>
+                
             </div>
           </div> 
+          
          <div class="form-group">
               <label class="col-sm-2 col-sm-2 control-label"  >Date de debut</label>
               <div class="col-sm-10">
@@ -57,38 +59,194 @@
       </div>
     </div>
   </div>
+  <!-- fin modal de demande -->
+<div class="container">
+  <h4 ><i class="fa fa-angle-right"></i> Liste des congés</h4>
+  <div *ngIf="conges.length==0; then thenBlock else elseBlock"></div>
+  <ng-template #thenBlock>
+    <h1 >Vous n'avez aucun congé.</h1>
+  </ng-template>
+  <ng-template #elseBlock>
+  <div class="container2">
 
     <table class="table table-striped">
         <thead class="thead-inverse">
 
             <tr> 
-                
+              <th scope="col">date demande</th>
                 <th scope="col">date_debut</th>
                 <th scope="col">date_fin</th>
+
                 <th scope="col">Raison</th>
-
-
+                <th scope="col">Réponse</th>
+                
                 <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let e of conges">
 
-                
+              <td>{{e.date_dem}}</td>
                 <td>{{e.date_debut}}</td>
                 <td>{{e.date_fin}}</td>
                 <td>{{e.raison}}</td>
-
-
+                
+                <td *ngIf="e.status == false" style="color: rgb(255, 0, 0);">Demande refusée</td>
+                <td *ngIf="e.status == true" style="color: rgb(11, 224, 107);">Demande acceptée</td>
+                <td *ngIf="e.status == null">en attente</td>
 
                 <td>
-                    <div>
-                        <button mat-raised-button class="action-button btn-success" routerLink="/details">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </button>
-                        <button mat-raised-button class="action-button btn-info"><i class="fa fa-trash"
-                                aria-hidden="true"></i></button>
-
+                    <div >
+                      <button mat-raised-button class="action-button btn-success" data-bs-toggle="modal" (click)="getbbyid(e)"
+              data-bs-target="#exampleModal4" aria-hidden="true" ><i class="fa fa-eye" aria-hidden="true"></i></button>
+                        <button  *ngIf="e.status == null" mat-raised-button class="action-button btn-info" data-bs-toggle="modal" (click)="reset(e)"
+                        data-bs-target="#exampleModal3"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                        <button mat-raised-button class="action-button btn-danger" data-bs-toggle="modal" (click)="reset(e)"
+                        data-bs-target="#exampleModal2" aria-hidden="true" ><i class="fa fa-trash"
+                          aria-hidden="true"></i></button>
+          <!-- model du supp -->
+          <div class="modal" id="exampleModal2" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+          
+                  <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    êtes-vous sûr de vouloir supprimer
+                  </div>
+          
+          
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          
+                    <button type="button" class="btn btn-danger" aria-label="Close" data-bs-dismiss="modal"
+                      (click)="delete()"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                  </div>
+          
+                </div>
+              </div>
+            </div>
+          <!-- fin du model du supp -->
+          <!-- modal de mise ajour -->
+          <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Details</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <form [formGroup]="congemForm"class="form-panel">
+             
+                 
+                  <div class="form-group">
+                    <label class="col-sm-2 col-sm-2 control-label" >Raison</label>
+                    <div class="col-sm-10">
+                      
+                      <textarea  name="raison" id="raison" formControlName="raison"  placeholder="raison" rows="4" cols="51">
+                        
+                        </textarea>
+                        
+                    </div>
+                  </div> 
+                
+                 <div class="form-group">
+                      <label class="col-sm-2 col-sm-2 control-label"  >Date de debut</label>
+                      <div class="col-sm-10">
+                      <input type="date"  name="date" class="form-control" id="date" formControlName="date_debut"  placeholder="date_debut">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label"  >Date de fin</label>
+                        <div class="col-sm-10">
+                        <input type="date"  name="date" class="form-control" id="date" formControlName="date_fin"  placeholder="date_fin">
+                        </div>
+                      </div>
+                   
+                   
+              
+                
+                <div class="modal-footer">
+                  <div class="click">
+                    <button _ngcontent-roy-c3="" 
+                          class="btn1 my-2 my-sm-0" 
+                          type="submit" 
+                          (click)="mise()"  data-bs-dismiss="modal">Enregistrer</button>
+                    <button _ngcontent-roy-c3="" 
+                          class="btn1  my-2 my-sm-0" 
+                          type="submit" data-bs-dismiss="modal"
+                          >Annuler</button>
+                  
+                  </div>
+                </div>
+            </form> 
+              </div>
+            </div>
+          </div>
+               <!-- modal de mise ajour -->
+               <!-- model du consulter -->
+  
+  <div class="modal"  id="exampleModal4" aria-hidden="true" >
+    
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+      <div  *ngFor="let user of conges2">  
+ 
+  
+          
+        
+     
+         
+          <div class="form-group">
+            <label class="control-label" >Raison</label>
+            
+              <p> {{user.raison}}</p>
+             
+          </div> 
+          
+         <div class="form-group">
+              <label class="control-label"  >Date de debut</label>
+            
+                <p> {{user.date_debut}}</p>
+              
+            </div>
+            <div class="form-group">
+                <label class="control-label"  >Date de fin</label>
+               
+                  <p> {{user.date_fin}}</p>
+               
+              </div>
+              <div class="form-group">
+                <label class=" control-label"  >Date de demande</label>
+               
+                  <p> {{user.date_dem}}</p>
+                </div>
+            
+              <div class="form-group" *ngIf="user.status !=null" >
+                <label class="control-label"  >Réponse</label>
+                
+                  <p> {{user.status}}</p>
+                </div>
+              
+              <div class="form-group" *ngIf="user.raison_ref !=null">
+                <label class="control-label"  >Raison de refus</label>
+                
+                  <p> {{user.raison_ref}}</p>
+                
+              </div>
+        </div> 
+    </div>
+  </div>
+ 
+</div>
+  </div>
                     </div>
                 </td>
             </tr>
@@ -97,3 +255,6 @@
 
         </tbody>
     </table>
+  </div>
+</ng-template>
+  </div>

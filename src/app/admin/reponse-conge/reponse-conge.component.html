@@ -25,7 +25,7 @@
                   <p> {{tab[3]}}</p>
               </div>
               <div>
-                <h4>Type vaconce </h4>
+                <h4>Type congé </h4>
                 <p style="margin-left: 3px;"> Formation</p>
             </div>
           </div>
@@ -62,7 +62,7 @@
       </div>
       <div class="modal-body">
         <div class="modal-body">
-          <p>Do you want to agree to assign the vacation?</p>
+          <p>Voulez-vous accepter d'attribuer les vacances ?</p>
         </div>
       </div>
 
@@ -84,7 +84,18 @@
       </div>
       <div class="modal-body">
         <div class="modal-body">
-          <p>Do you want to agree to assign the vacation?</p>
+          <p>Voulez-vous Refuser d'attribuer les vacances ?</p>
+          <form [formGroup]="raisonForm" class="form-panel">
+          <div class="form-group">
+            <label class="col-sm-2 col-sm-2 control-label" >Raison</label>
+            <div class="col-sm-10">
+              
+              <textarea  name="sujet" id="sujet" formControlName="raison_ref"  placeholder="sujet" rows="4" cols="51">
+                
+                </textarea>
+            </div>
+          </div> 
+        </form>
         </div>
       </div>
 

@@ -14,7 +14,7 @@ export class DetailsComponent implements OnInit {
   user:any=jwt_decode(this.token)
   employes: any;
   constructor(private employeService: EmpolyeService) { }
-
+ 
   ngOnInit(): void { 
     
 

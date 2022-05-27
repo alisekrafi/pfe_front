@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { CondidatComponent } from './condidat/condidat.component';
+import { CondidatComponent } from './condidate/condidat/condidat.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardAdminComponent } from './admin/dashboard-admin/dashboard-admin.component';
 import { ListeEmpComponent } from './admin/liste-emp/liste-emp.component';
@@ -30,7 +30,19 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { ReponseCongeComponent } from './admin/reponse-conge/reponse-conge.component';
 import { UpdatePwdComponent } from './admin/update-pwd/update-pwd.component';
+import { ProfileComponent } from './employe/profile/profile.component';
+import { UpdateInfoEmpComponent } from './employe/update-info-emp/update-info-emp.component';
+import { UpdatePwdEmpComponent } from './employe/update-pwd-emp/update-pwd-emp.component';
+import {DatePipe} from '@angular/common';
+import { InformationComponent } from './admin/information/information.component';
+import { InformationEmpComponent } from './employe/information-emp/information-emp.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ToastrModule } from 'ngx-toastr';
+import { ProfilCondidatComponent } from './admin/profil-condidat/profil-condidat.component';
+import { ReponseComponent } from './condidate/reponse/reponse.component';
+import { ConcourComponent } from './admin/concour/concour.component';
+import { ListeConcourEmpComponent } from './condidate/liste-concour-emp/liste-concour-emp.component';
 
 
 
@@ -61,6 +73,15 @@ import { UpdatePwdComponent } from './admin/update-pwd/update-pwd.component';
     ForgetPasswordComponent,
     ReponseCongeComponent,
     UpdatePwdComponent,
+    ProfileComponent,
+    UpdateInfoEmpComponent,
+    UpdatePwdEmpComponent,
+    InformationComponent,
+    InformationEmpComponent,
+    ProfilCondidatComponent,
+    ReponseComponent,
+    ConcourComponent,
+    ListeConcourEmpComponent,
    
    
     
@@ -72,10 +93,16 @@ import { UpdatePwdComponent } from './admin/update-pwd/update-pwd.component';
     ReactiveFormsModule,
     HttpClientModule,
     NgxPrintModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 5000, // seconds
+      closeButton: true,
+      // progressBar: true,
+    }),
    
    
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
